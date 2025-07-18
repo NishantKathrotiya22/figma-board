@@ -4,10 +4,114 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles/genral.css">
+    <link rel="stylesheet" href="styles/style.css">
     <title>Figma Board</title>
 </head>
 
 <body>
+    <div class="temp"></div>
+
+    <!-- Add "hide-filter" to hide filter container  -->
+    <div class="grid-container">
+
+
+        <div class="tab-container inner-padding ">
+            <button class="tab-btn btn"> <!-- add active-tab-btn to activate tab-->
+                <p>Initial Board</p>
+                <img src="Assets/icons/vdots.svg" alt="dots" />
+            </button>
+            <button class="tab-btn btn">
+                <p>Leave Conflicts</p>
+                <img src="Assets/icons/vdots.svg" alt="dots" />
+            </button>
+        </div>
+
+        <div class="toolbar-container">
+            <button class="toolbar-btn btn" id="filter-btn">
+                <img src="Assets/icons/Filter.svg" alt="Filter" />
+                <p>Filter</p>
+            </button>
+
+            <button class="toolbar-btn btn">
+                <img src="Assets/icons/calendar.svg" alt="calendar" />
+                <p>Today</p>
+            </button>
+
+            <!-- <button class="toolbar-btn btn">
+                <img src="Assets/icons/timer.svg" />
+                <p>Hourly</p>
+                <img src="Assets/icons/DArrow.svg" alt="Arrow">
+            </button> -->
+
+
+
+            <button class="toolbar-btn btn">
+                <img src="Assets/icons/LArrow.svg" alt="Arrow">
+                <img src="Assets/icons/calendar-grid.svg" />
+                <p> 12/11/2024 - 18/11/2024</p>
+            </button>
+        </div>
+
+        <div class="filter-container inner-padding">
+
+            <div class="filter-title">
+                <h2>Resource Filter</h2>
+                <button class="btn" id="filter-close"> <img src="Assets/icons/close.svg" alt="close"></button>
+            </div>
+
+            <div class="filter-action">
+                <button class="btn action-btn">
+                    <img src="Assets/icons/refresh.svg" alt="refresh">
+                    <P>Reset to default</P>
+                </button>
+                <button class="btn action-btn">
+                    <img src="Assets/icons/save.svg" alt="save">
+                    <P>Save as default</P>
+                </button>
+            </div>
+
+
+            <div class="custom-dropdown">
+                <label for="region-filter">Region</label>
+                <div class="dropdown-selected" tabindex="0" name="region-filter">
+                    <p class="value-display">Select an option</p>
+                    <img src="Assets/icons/DArrow.svg" alt="">
+                </div>
+                <ul class="dropdown-options">
+                    <li class="dropdown-option">Option 1</li>
+                    <li class="dropdown-option">Option 2</li>
+                    <li class="dropdown-option">Option 3</li>
+                </ul>
+            </div>
+
+            <div class="custom-dropdown">
+                <label for="work-type-filter">Care Work Type</label>
+                <div class="dropdown-selected" tabindex="0" name="work-type-filter">
+                    <p class="value-display">Select an option</p>
+                    <img src="Assets/icons/DArrow.svg" alt="">
+                </div>
+                <ul class="dropdown-options">
+                    <li class="dropdown-option">Option 1</li>
+                    <li class="dropdown-option">Option 2</li>
+                    <li class="dropdown-option">Option 3</li>
+                </ul>
+            </div>
+
+
+
+        </div>
+
+        <div class="ec-container">
+            how Are You
+        </div>
+    </div>
+
+    <script src="script/interaction.js"></script>
 
 </body>
 
