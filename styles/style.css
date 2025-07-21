@@ -112,6 +112,14 @@
     font-size: 1.8rem;
 }
 
+.ec-today {
+    background-color: transparent !important;
+}
+
+.ec-highlight {
+    background-color: #f0f8ff !important;
+}
+
 
 .filter-action {
 
@@ -236,4 +244,160 @@ select:focus>option:hover {
 
 .ec-container {
     width: 100%;
+}
+
+
+
+
+
+.person-details {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 7.8rem;
+    display: flex;
+    align-items: center;
+    padding: 0;
+
+}
+
+.profile-img {
+    width: 3.7rem;
+    height: 3.7rem;
+    border-radius: 50%;
+    overflow: hidden;
+    padding: 0;
+
+}
+
+.profile-img img {
+    width: 3.7rem;
+    height: 3.7rem;
+    object-fit: cover;
+    padding: 0;
+}
+
+.person-info h5 {
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+}
+
+
+.person-info p {
+    font-size: 1.4rem;
+    color: var(--text-light-2);
+}
+
+
+
+/* .ec-timeline .ec-events,
+.ec-resource {
+    height: 8rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-basis: 0 !important;
+} */
+
+/* .ec-resource {
+    height: 8rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-basis: 0 !important;
+} */
+
+
+
+.ec-body,
+.ec-sidebar,
+.ec-header,
+.ec-times,
+.ec-time,
+.ec-sidebar-title,
+.ec-days {
+    padding: 0 !important;
+    border: none !important;
+    margin: 0 !important;
+}
+
+
+
+/* ec-days Resposible for vertical Sepration  */
+
+/* .ec-resource Responsible for borer between Resources  */
+
+/* .ec-time Resposibe for sepration between time notation  */
+
+/* .ec-times Resposibe for sepration above time notation  */
+
+/* .ec-line::after Responsible For Verticle Sepration (.ec-lines is parant of it) */
+
+
+.ec-line::after {
+    border-left: 3px dashed var(--border-color) !important;
+}
+
+
+/* .ec-events {
+    border-bottom: 3px dashed var(--border-color) !important;
+} */
+
+.ec-timeline .ec-sidebar .ec-resource:not(:last-child) {
+    border-bottom: 3px solid var(--border-color) !important;
+}
+
+/* .ec-days:not(:last-child) .ec-day .ec-events {
+    border-bottom: 3px dashed var(--border-color) !important;
+} */
+
+.ec-days {
+    border-bottom: 3px dashed var(--border-color) !important;
+}
+
+/* Responsible Column Width  */
+
+.ec-timeline .ec-time,
+.ec-timeline .ec-line {
+    width: 249px !important;
+}
+
+
+
+.ec-today {
+    background-color: transparent !important;
+}
+
+.ec-event {
+    height: 100%;
+    background-color: var(--timeline-bg) !important;
+    border-left: 3px solid var(--timeline-text);
+    flex-basis: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.ec-time-grid .ec-time,
+.ec-time-grid .ec-line,
+.ec-event,
+.ec-days,
+.ec-events,
+.ec-day {
+    height: 8rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-basis: 0 !important;
+}
+
+.ec-resource,
+.ec-resource>span,
+.ec-resource>span>.person-details {
+    height: 8rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-basis: 0 !important;
+    width: 249px;
+}
+
+.ec-content {
+    border-right: 2px solid var(--timeline-text);
 }

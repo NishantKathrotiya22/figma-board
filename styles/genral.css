@@ -2,7 +2,7 @@
     /* === Base Colors === */
     --bg-main: #F5F5F5;
     --text-toolbar: rgba(0, 0, 0, 0.6);
-    --text-light:#ffffff;
+    --text-light: #ffffff;
     --text-dark: #000000;
     --text-light-1: #979797;
     --text-light-2: #D7D7D7;
@@ -103,6 +103,10 @@ body {
 
 .inner-padding {
     padding: 0 2.2rem;
+}
+
+.p-2 {
+    padding: 0 2rem;
 }
 
 .btn {

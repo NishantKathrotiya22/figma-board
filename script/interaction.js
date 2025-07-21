@@ -1,3 +1,7 @@
+function getElement(id) {
+  return document.querySelector(id);
+}
+
 // Custom Dropdown
 var dropdowns = document.querySelectorAll(".custom-dropdown");
 if (dropdowns.length) {
@@ -30,17 +34,22 @@ if (dropdowns.length) {
 }
 
 // Filter Controller
-var gridContainerEl = document.querySelector(".grid-container");
-var filterBtn = document.getElementById("filter-btn");
-var filterClose = document.getElementById("filter-close");
+var gridContainerEl = getElement(".grid-container");
+var filterBtn = getElement("#filter-btn");
+var filterClose = getElement("#filter-close");
+var ecHolderEl = getElement(".ec-holder");
+
 if (filterBtn && gridContainerEl) {
   filterBtn.addEventListener("click", function () {
     gridContainerEl.classList.toggle("hide-filter");
+    ecHolderEl.classList.toggle("p-2");
   });
 }
+
 if (filterClose && gridContainerEl) {
   filterClose.addEventListener("click", function () {
     gridContainerEl.classList.add("hide-filter");
+    ecHolderEl.classList.add("p-2");
   });
 }
 
