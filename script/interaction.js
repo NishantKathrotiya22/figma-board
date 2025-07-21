@@ -1,66 +1,82 @@
-/****** Custom Dropdown *******/
-
-document.querySelectorAll(".custom-dropdown").forEach((dropdown) => {
-  const disp = dropdown.querySelector(".value-display");
-  const selected = dropdown.querySelector(".dropdown-selected");
-  const options = dropdown.querySelectorAll(".dropdown-option");
-
-  selected.addEventListener("click", () => {
-    dropdown.classList.toggle("open");
-  });
-
-  options.forEach((option) => {
-    option.addEventListener("click", () => {
-      // selected.textContent = option.textContent;
-      disp.textContent = option.textContent;
-      dropdown.classList.remove("open");
+// Custom Dropdown
+var dropdowns = document.querySelectorAll(".custom-dropdown");
+if (dropdowns.length) {
+  // Only one global click listener for closing dropdowns
+  document.addEventListener("click", function (e) {
+    dropdowns.forEach(function (dropdown) {
+      if (!dropdown.contains(e.target)) {
+        dropdown.classList.remove("open");
+      }
     });
   });
+  dropdowns.forEach(function (dropdown) {
+    var disp = dropdown.querySelector(".value-display");
+    var selected = dropdown.querySelector(".dropdown-selected");
+    var options = dropdown.querySelectorAll(".dropdown-option");
+    if (selected) {
+      selected.addEventListener("click", function (e) {
+        e.stopPropagation();
+        dropdown.classList.toggle("open");
+      });
+    }
+    options.forEach(function (option) {
+      option.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (disp) disp.textContent = option.textContent;
+        dropdown.classList.remove("open");
+      });
+    });
+  });
+}
 
-  // Close dropdown when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!dropdown.contains(e.target)) {
-      dropdown.classList.remove("open");
+// Filter Controller
+var gridContainerEl = document.querySelector(".grid-container");
+var filterBtn = document.getElementById("filter-btn");
+var filterClose = document.getElementById("filter-close");
+if (filterBtn && gridContainerEl) {
+  filterBtn.addEventListener("click", function () {
+    gridContainerEl.classList.toggle("hide-filter");
+  });
+}
+if (filterClose && gridContainerEl) {
+  filterClose.addEventListener("click", function () {
+    gridContainerEl.classList.add("hide-filter");
+  });
+}
+
+// Date Range Picker (jQuery)
+if (typeof $ !== "undefined" && typeof $.fn.daterangepicker !== "undefined") {
+  $(function () {
+    var $dateInput = $('input[name="datefilter"]');
+    if ($dateInput.length) {
+      $dateInput.daterangepicker({
+        autoUpdateInput: true,
+        locale: {
+          cancelLabel: "Cancel",
+          format: "DD/MM/YYYY",
+        },
+        startDate: moment(),
+        endDate: moment(),
+        applyButtonClasses: "date-apply-btn",
+        cancelButtonClasses: "date-cancel-btn",
+      });
+      $dateInput.on("apply.daterangepicker", function (ev, picker) {
+        $(this).val(
+          picker.startDate.format("DD/MM/YYYY") +
+            " - " +
+            picker.endDate.format("DD/MM/YYYY")
+        );
+
+        if (window.ecCalendar) {
+          var start = picker.startDate.clone().startOf("day");
+          var end = picker.endDate.clone().startOf("day");
+          var days = end.diff(start, "days") + 1; // inclusive
+          window.ecCalendar.setOption("date", start.toDate());
+          window.ecCalendar.setOption("duration", { days: days });
+        }
+      });
     }
   });
-});
-
-/****** Btn Clicks *******/
-const gridContainerEl = document.querySelector(".grid-container");
-
-document.getElementById("filter-btn").addEventListener("click", () => {
-  gridContainerEl.classList.toggle("hide-filter");
-});
-
-document.getElementById("filter-close").addEventListener("click", () => {
-  gridContainerEl.classList.add("hide-filter");
-});
-
-/******* Date Range Picker *********/
-$(function () {
-  $('input[name="datefilter"]').daterangepicker({
-    autoUpdateInput: true,
-    locale: {
-      cancelLabel: "Cancel",
-      format: "DD/MM/YYYY",
-    },
-    startDate: moment(),
-    endDate: moment().add(2, "days"),
-    applyButtonClasses: "date-apply-btn",
-    cancelButtonClasses: "date-cancel-btn",
-  });
-
-  $('input[name="datefilter"]').on(
-    "apply.daterangepicker",
-    function (ev, picker) {
-      $(this).val(
-        picker.startDate.format("DD/MM/YYYY") +
-          " - " +
-          picker.endDate.format("DD/MM/YYYY")
-      );
-
-      //Trigger On Click of Apply
-      // Do The Task Over here
-    }
-  );
-});
+} else {
+  console.warn("jQuery or daterangepicker not loaded.");
+}
