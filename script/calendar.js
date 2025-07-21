@@ -1,11 +1,11 @@
-/// <reference path="libs/event-calendar.d.ts" />
+/// <reference path="libs/event-calendar/event-calendar.d.ts" />
 
 const createCalendar = function () {
   const ec = EventCalendar.create(document.getElementById("ec"), {
     view: "resourceTimelineDay",
-    headerToolbar: {
-      start: "",
-    },
+    // headerToolbar: {
+    //   start: "",
+    // },
 
     dayHeaderFormat: {
       weekday: "long",

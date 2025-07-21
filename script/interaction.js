@@ -29,9 +29,38 @@ document.querySelectorAll(".custom-dropdown").forEach((dropdown) => {
 const gridContainerEl = document.querySelector(".grid-container");
 
 document.getElementById("filter-btn").addEventListener("click", () => {
-  gridContainerEl.classList.remove("hide-filter");
+  gridContainerEl.classList.toggle("hide-filter");
 });
 
 document.getElementById("filter-close").addEventListener("click", () => {
   gridContainerEl.classList.add("hide-filter");
+});
+
+/******* Date Range Picker *********/
+$(function () {
+  $('input[name="datefilter"]').daterangepicker({
+    autoUpdateInput: true,
+    locale: {
+      cancelLabel: "Cancel",
+      format: "DD/MM/YYYY",
+    },
+    startDate: moment(),
+    endDate: moment().add(2, "days"),
+    applyButtonClasses: "date-apply-btn",
+    cancelButtonClasses: "date-cancel-btn",
+  });
+
+  $('input[name="datefilter"]').on(
+    "apply.daterangepicker",
+    function (ev, picker) {
+      $(this).val(
+        picker.startDate.format("DD/MM/YYYY") +
+          " - " +
+          picker.endDate.format("DD/MM/YYYY")
+      );
+
+      //Trigger On Click of Apply
+      // Do The Task Over here
+    }
+  );
 });

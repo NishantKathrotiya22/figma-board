@@ -14,14 +14,15 @@
 
     <link rel="stylesheet" href="styles/genral.css">
     <link rel="stylesheet" href="styles/style.css">
-    <link rel="stylesheet" href="libs/event-calendar.min.css">
+
+    <link rel="stylesheet" href="libs/event-calendar/event-calendar.min.css">
+    <link rel="stylesheet" href="libs/dateRangePicker/daterangepicker.css">
 
 
     <title>Figma Board</title>
 </head>
 
 <body>
-    <div class="temp"></div>
 
     <!-- Add "hide-filter" to hide filter container  -->
     <div class="grid-container">
@@ -60,8 +61,11 @@
             <button class="toolbar-btn btn">
                 <img src="Assets/icons/LArrow.svg" alt="Arrow">
                 <img src="Assets/icons/calendar-grid.svg" />
-                <p> 12/11/2024 - 18/11/2024</p>
+                <!-- <p> 12/11/2024 - 18/11/2024</p> -->
+                <input type="text" name="datefilter" value="" class="btn date-range" />
             </button>
+
+
         </div>
 
         <div class="filter-container inner-padding">
@@ -119,9 +123,18 @@
         </div>
     </div>
 
+    <!-- Importing event-calendar  -->
+    <script src="libs/event-calendar/event-calendar.min.js"></script>
+
+    <!-- Importing Date Range picker  -->
+
+    <script src="libs/dateRangePicker/jquery.min.js"></script>
+    <script src="libs/dateRangePicker/moment.min.js"></script>
+    <script src="libs/dateRangePicker/daterangepicker.min.js"></script>
+
     <script src="script/interaction.js"></script>
-    <script src="libs/event-calendar.min.js"></script>
     <script src="script/calendar.js"></script>
+
 
 </body>
 
