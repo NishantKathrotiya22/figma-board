@@ -249,7 +249,7 @@ select:focus>option:hover {
 
 
 
-
+/***** Resource Styling *****/
 .person-details {
     display: flex;
     gap: 1rem;
@@ -289,35 +289,69 @@ select:focus>option:hover {
     color: var(--text-light-2);
 }
 
-
-
-/* .ec-timeline .ec-events,
-.ec-resource {
-    height: 8rem !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    flex-basis: 0 !important;
-} */
-
-/* .ec-resource {
-    height: 8rem !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    flex-basis: 0 !important;
-} */
-
-
-
+/***** Removing All Default Styling (Specially Border)  ********/
 .ec-body,
 .ec-sidebar,
 .ec-header,
 .ec-times,
 .ec-time,
 .ec-sidebar-title,
+.ec-resource,
+.ec-day-head,
 .ec-days {
     padding: 0 !important;
     border: none !important;
     margin: 0 !important;
+    box-sizing: content-box !important;
+    /* box-sizing: border-box !important; */
+}
+
+/***** Setting Height to Timeline as well as Resource  ********/
+.ec-time-grid .ec-time,
+.ec-time-grid .ec-line,
+.ec-event,
+.ec-resource,
+.ec-days,
+.ec-day,
+.ec-events {
+    height: 8rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-basis: 0 !important;
+}
+
+
+/***** Forcing Resources to not to Squiz (Width Specially)  ********/
+.ec-resource,
+.ec-resource>span,
+.ec-resource>span>.person-details {
+    height: 8rem !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    flex-basis: 0 !important;
+    width: 249px;
+}
+
+/* Responsible Column Width  */
+.ec-timeline .ec-time,
+.ec-timeline .ec-line {
+    width: 249px !important;
+}
+
+.ec-resource,
+.ec-days {
+    height: 8rem !important;
+    padding: 0 !important;
+}
+
+
+
+
+/****  Fixing the Header height *****/
+
+.ec-header>.ec-days>.ec-day,
+.ec-header>.ec-days {
+    height: max-content !important;
 }
 
 
@@ -333,71 +367,95 @@ select:focus>option:hover {
 /* .ec-line::after Responsible For Verticle Sepration (.ec-lines is parant of it) */
 
 
+
+.ec-sidebar {
+    border-right: 3px solid var(--timeline-text) !important;
+}
+
+/**** Sepration Line Below Each Resources ****/
+.ec-timeline .ec-sidebar .ec-resource {
+    border-top: 3px solid var(--border-color) !important;
+}
+
+/**** Fix For Last Child Resources ****/
+.ec-resource:last-child .person-details {
+    position: relative;
+}
+
+.ec-resource:last-child .person-details::after {
+    content: "";
+    width: 100%;
+    height: 3px;
+    position: absolute !important;
+    border-bottom: 3px solid var(--border-color);
+    bottom: -3px;
+}
+
+
+/***** Vertical Sepration lines (Dahsed) *****/
 .ec-line::after {
     border-left: 3px dashed var(--border-color) !important;
 }
 
+/**** Sepraiton line Between Days in Header *****/
 
-/* .ec-events {
-    border-bottom: 3px dashed var(--border-color) !important;
-} */
-
-.ec-timeline .ec-sidebar .ec-resource:not(:last-child) {
-    border-bottom: 3px solid var(--border-color) !important;
+.ec-header .ec-days {
+    position: relative;
 }
 
-/* .ec-days:not(:last-child) .ec-day .ec-events {
-    border-bottom: 3px dashed var(--border-color) !important;
-} */
-
-.ec-days {
-    border-bottom: 3px dashed var(--border-color) !important;
+.ec-header .ec-days .ec-day:not(:first-child)::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    border-left: 3px dashed var(--border-color);
 }
 
-/* Responsible Column Width  */
-
-.ec-timeline .ec-time,
-.ec-timeline .ec-line {
-    width: 249px !important;
+/***** Horizontal Sepration Line in canvas *****/
+.ec-body .ec-days {
+    border-top: 3px dashed var(--border-color) !important;
 }
 
 
 
+.ec-days:last-child {
+    border-bottom: 3px dashed var(--border-color) !important;
+}
+
+/***** Calendar BG Color *****/
 .ec-today {
     background-color: transparent !important;
 }
 
+
+/***** Genral Timeline Style  *****/
 .ec-event {
     height: 100%;
+    flex-basis: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+
+
+.event-disp {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    justify-content: space-between;
+    height: 100%;
+    overflow: hidden;
+    padding: 0.3rem 1rem;
+    font-weight: 600;
+}
+
+.event-emp-id {
+    margin-right: 2rem;
+}
+
+/*****  Timeline Vartiations *****/
+.ec-event-active {
     background-color: var(--timeline-bg) !important;
     border-left: 3px solid var(--timeline-text);
-    flex-basis: 0 !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.ec-time-grid .ec-time,
-.ec-time-grid .ec-line,
-.ec-event,
-.ec-days,
-.ec-events,
-.ec-day {
-    height: 8rem !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    flex-basis: 0 !important;
-}
-
-.ec-resource,
-.ec-resource>span,
-.ec-resource>span>.person-details {
-    height: 8rem !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    flex-basis: 0 !important;
-    width: 249px;
-}
-
-.ec-content {
-    border-right: 2px solid var(--timeline-text);
+    color: var(--timeline-text);
+    height: 100% !important;
 }

@@ -13,100 +13,17 @@ function getById(id) {
   return document.getElementById(id);
 }
 
-function createCalendar() {
-  const ecEl = getById("ec");
-  if (!ecEl || typeof EventCalendar === "undefined") {
-    console.error("Calendar container or EventCalendar library not found.");
-    return;
-  }
-  const ec = EventCalendar.create(ecEl, {
-    view: "resourceTimelineDay",
-    initialView: "resourceTimelineDay",
-    slotWidth: "249",
-    slotHeight: "88",
-    editable: false,
-    durationEditable: false,
-    eventStartEditable: false,
-    slotHeight: "74px",
-    events: [
-      {
-        resourceId: "1",
-        title: "Local Test Event",
-        start: "2025-07-21 7:00:00",
-        end: "2025-07-21 12:00:00",
-        editable: false,
-        durationEditable: false,
-        eventStartEditable: false,
-      },
-      {
-        resourceId: "2",
-        title: "Local Test Event",
-        start: "2025-07-21 8:00:00",
-        end: "2025-07-21 12:00:00",
-        editable: false,
-        durationEditable: false,
-        eventStartEditable: false,
-      },
-      {
-        resourceId: "3",
-        title: "Local Test Event",
-        start: "2025-07-21 9:00:00",
-        end: "2025-07-21 13:00:00",
-        editable: false,
-        durationEditable: false,
-        eventStartEditable: false,
-      },
-      {
-        resourceId: "4",
-        title: "Local Test Event",
-        start: "2025-07-21 9:00:00",
-        end: "2025-07-21 12:00:00",
-        editable: false,
-        durationEditable: false,
-        eventStartEditable: false,
-      },
-      {
-        resourceId: "5",
-        title: "Local Test Event",
-        start: "2025-07-21 12:00:00",
-        end: "2025-07-21 13:00:00",
-        editable: false,
-        durationEditable: false,
-        eventStartEditable: false,
-      },
-    ],
-    resources: getResources(),
+function parseDate(date) {
+  const weekdayFormatter = new Intl.DateTimeFormat("en-US", {
+    weekday: "long",
   });
-  window.ecCalendar = ec;
-}
+  const weekday = weekdayFormatter.format(date);
+  const day = String(date.getDate()).padStart(2, "0");
+  const month = String(date.getMonth() + 1).padStart(2, "0");
+  const year = date.getFullYear();
 
-window.addEventListener("DOMContentLoaded", function () {
-  createCalendar();
-  // Today BTN
-  var todayBtn = getById("today-btn");
-  if (todayBtn) {
-    todayBtn.addEventListener("click", function () {
-      if (window.ecCalendar) {
-        window.ecCalendar.setOption("date", new Date());
-      }
-      // Sync daterangepicker to today
-      if (
-        typeof $ !== "undefined" &&
-        typeof $.fn.daterangepicker !== "undefined"
-      ) {
-        var $dateInput = $('input[name="datefilter"]');
-        if ($dateInput.length && $dateInput.data("daterangepicker")) {
-          var today = moment();
-          $dateInput.data("daterangepicker").setStartDate(today);
-          $dateInput.data("daterangepicker").setEndDate(today);
-          $dateInput.val(
-            today.format("DD/MM/YYYY") + " - " + today.format("DD/MM/YYYY")
-          );
-        }
-      }
-    });
-  }
-});
+  return `${weekday} - ${day}-${month}-${year}`;
+}
 
 function getResources() {
   var data = [
@@ -183,4 +100,160 @@ function getResources() {
   });
 
   return data;
+}
+
+function getEvents() {
+  return [
+    {
+      resourceId: "1",
+      title: `<h1>Local Test Event</h1>`,
+      start: "2025-07-22 10:00:00",
+      end: "2025-07-23 12:00:00",
+      id: "123",
+      type: "Full",
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100123",
+        employeeName: "Diana Alexiou",
+        address: "12, ",
+        careerType: "Care Type",
+      },
+    },
+    {
+      resourceId: "2",
+      title: "Local Test Event -2",
+      start: "2025-07-22 10:00:00",
+      end: "2025-07-22 11:00:00",
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100123",
+        employeeName: "Diana Alexiou",
+        address: "12, ",
+        careerType: "Care Type",
+      },
+    },
+
+    {
+      resourceId: "3",
+      title: "Local Test Event",
+      start: "2025-07-22 09:30:00",
+      end: "2025-07-22 13:00:00",
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100123",
+        employeeName: "Diana Alexiou",
+        address: "12, ",
+        careerType: "Care Type",
+      },
+    },
+    {
+      resourceId: "4",
+      title: "Local Test Event",
+      start: "2025-07-22 9:45:00",
+
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100123",
+        employeeName: "Diana Alexiou",
+        address: "12, ",
+        careerType: "Care Type",
+      },
+    },
+    {
+      resourceId: "5",
+      title: "<h1>Local Test Event - 5</h1>",
+      start: "2025-07-22 12:00:00",
+      end: "2025-07-22 13:00:00",
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100123",
+        employeeName: "Diana Alexiou",
+        address: "12, ",
+        careerType: "Care Type",
+      },
+    },
+  ];
+}
+
+function createCalendar() {
+  const ecEl = getById("ec");
+  if (!ecEl || typeof EventCalendar === "undefined") {
+    console.error("Calendar container or EventCalendar library not found.");
+    return;
+  }
+  const ec = EventCalendar.create(ecEl, {
+    view: "resourceTimelineDay",
+    initialView: "resourceTimelineDay",
+    slotWidth: "249",
+    slotHeight: "88",
+    editable: false,
+    durationEditable: false,
+    eventStartEditable: false,
+    events: getEvents(),
+    resources: getResources(),
+
+    dayHeaderFormat: (date) => parseDate(date),
+
+    eventContent: (arg) => eventDetailsRender(arg),
+
+    titleFormat: (start, end) => parseDate(start),
+
+    slotMinTime: "9:00:00",
+    slotMaxTime: "20:00:00",
+  });
+  window.ecCalendar = ec;
+}
+
+window.addEventListener("DOMContentLoaded", function () {
+  createCalendar();
+  // Today BTN
+  var todayBtn = getById("today-btn");
+  if (todayBtn) {
+    todayBtn.addEventListener("click", function () {
+      if (window.ecCalendar) {
+        window.ecCalendar.setOption("date", new Date());
+      }
+      // Sync daterangepicker to today
+      if (
+        typeof $ !== "undefined" &&
+        typeof $.fn.daterangepicker !== "undefined"
+      ) {
+        var $dateInput = $('input[name="datefilter"]');
+        if ($dateInput.length && $dateInput.data("daterangepicker")) {
+          var today = moment();
+          $dateInput.data("daterangepicker").setStartDate(today);
+          $dateInput.data("daterangepicker").setEndDate(today);
+          $dateInput.val(
+            today.format("DD/MM/YYYY") + " - " + today.format("DD/MM/YYYY")
+          );
+        }
+      }
+    });
+  }
+});
+
+function eventDetailsRender(arg) {
+  return {
+    html: `<div class="event-disp">
+                <p><span class="event-emp-id">${arg.event.extendedProps.employeeID}</span>${arg.event.extendedProps.employeeName}</p>
+                <p>${arg.event.extendedProps.address}</p>
+                <p>${arg.event.extendedProps.careerType}</p>
+                <p>4h 00m</p>
+            </div>`,
+  };
 }
