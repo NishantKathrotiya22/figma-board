@@ -81,6 +81,61 @@ function getResources() {
       totalTime: "244h 29m booked",
       imgUrl: "Assets/profiles/R9.jpg",
     },
+
+    {
+      id: 1,
+      name: "Emma Collins",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R1.jpg",
+    },
+    {
+      id: 2,
+      name: "James Fletcher",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R2.jpg",
+    },
+    {
+      id: 3,
+      name: "Thomas Bennett",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R3.jpg",
+    },
+    {
+      id: 4,
+      name: "Sophie Hayes",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R4.jpg",
+    },
+    {
+      id: 5,
+      name: "Lucy Hammond",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R5.jpg",
+    },
+    {
+      id: 6,
+      name: "Sophie Hayes",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R6.jpg",
+    },
+    {
+      id: 7,
+      name: "Henry Blake",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R7.jpg",
+    },
+    {
+      id: 8,
+      name: "Freya Dawson",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R8.jpg",
+    },
+    {
+      id: 9,
+      name: "Elliot Brooks",
+      totalTime: "244h 29m booked",
+      imgUrl: "Assets/profiles/R9.jpg",
+    },
   ];
 
   data.forEach((person) => {

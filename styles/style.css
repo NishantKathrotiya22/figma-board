@@ -354,6 +354,18 @@ select:focus>option:hover {
     height: max-content !important;
 }
 
+.ec-times .ec-time,
+.ec-header .ec-day-head {
+    font-size: 1.4rem;
+}
+
+.ec-times .ec-time {
+    color: var(--text-toolbar);
+}
+
+.ec-day-head{
+    font-weight: 500 !important;
+}
 
 
 /* ec-days Resposible for vertical Sepration  */
@@ -367,10 +379,10 @@ select:focus>option:hover {
 /* .ec-line::after Responsible For Verticle Sepration (.ec-lines is parant of it) */
 
 
-
-.ec-sidebar {
-    border-right: 3px solid var(--timeline-text) !important;
+.ec-timeline .ec-sidebar .ec-resource {
+    border-right: 3px dashed var(--border-color) !important;
 }
+
 
 /**** Sepration Line Below Each Resources ****/
 .ec-timeline .ec-sidebar .ec-resource {
