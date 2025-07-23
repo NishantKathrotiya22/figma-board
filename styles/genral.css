@@ -1,6 +1,7 @@
 :root {
     /* === Base Colors === */
     --bg-main: #F5F5F5;
+    --bg-white:#ffffff;
     --text-toolbar: rgba(0, 0, 0, 0.6);
     --text-light: #ffffff;
     --text-dark: #000000;

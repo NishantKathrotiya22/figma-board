@@ -515,7 +515,10 @@ select:focus>option:hover {
     margin: 0 !important;
 }
 
-
+.event-disp-container {
+    position: relative;
+    /* z-index: 0 !important; */
+}
 
 .event-disp {
     display: flex;
@@ -533,6 +536,82 @@ select:focus>option:hover {
 }
 
 
+/***** Top Right Triangle ****/
+
+.ec-event::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 13px;
+    height: 13px;
+}
+
+
+
+/***** Hover Details Container *****/
+
+.event-desc {
+    display: none;
+    width: 23rem;
+    padding: 0.1rem 0.2rem 1rem 1.4rem;
+    left: 25%;
+    bottom: -152%;
+    position: absolute;
+    z-index: 2020 !important;
+    background-color: var(--bg-white) !important;
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    border-top-left-radius: 0;
+}
+
+.event-desc::before {
+    content: "";
+    position: absolute;
+    top: -8%;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    background: linear-gradient(to bottom right, transparent 50%, var(--bg-white) 50%);
+    z-index: 2030 !important;
+}
+
+/**** Inner Details Styling *****/
+
+.ec-event:hover .event-desc {
+    display: inline-block;
+}
+
+.event-desc-id {
+    font-size: 1.4rem;
+    font-weight: 500;
+}
+
+.event-desc>p:nth-child(2) {
+    font-size: 1rem;
+    color: var(--text-toolbar);
+}
+
+.event-desc-grid {
+    margin-top: 0.2rem;
+    font-size: 1rem;
+    display: grid;
+    column-gap: 0.1rem;
+    row-gap: 0.5rem;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.event-desc-grid p:nth-child(odd) {
+    color: var(--text-dark);
+    font-weight: 800;
+    grid-column: 1/3;
+}
+
+.event-desc-grid p:nth-child(even) {
+    grid-column: 3/6;
+}
+
 /* ========================================================
                         Timeline Vartiations
    ======================================================== */
@@ -543,6 +622,10 @@ select:focus>option:hover {
     background-color: var(--timeline-bg) !important;
     border-left: 3px solid var(--timeline-text);
     color: var(--timeline-text);
+}
+
+.ec-event-active::after {
+    background: linear-gradient(to top right, transparent 50%, var(--timeline-text) 50%);
 }
 
 /**** Add Background Color To Event Holder ****/
@@ -561,6 +644,10 @@ select:focus>option:hover {
     color: var(--timeline-yellow-text);
 }
 
+.ec-event-yellow::after {
+    background: linear-gradient(to top right, transparent 50%, var(--timeline-yellow-text) 50%);
+}
+
 /**** Add Background Color To Event Holder ****/
 
 .ec-events:has(.ec-event-yellow) {
@@ -570,11 +657,21 @@ select:focus>option:hover {
 
 
 
+
+
 /*****  Active Timeline (Pink) *****/
 .ec-event-pink {
     background-color: var(--timeline-pink-bg) !important;
     border-left: 3px solid var(--timeline-pink-text);
     color: var(--timeline-pink-text);
+}
+
+.ec-event-pink::after {
+    background: linear-gradient(to top right, transparent 50%, var(--timeline-pink-text) 50%);
+}
+
+.ec-event-gray::after {
+    background: linear-gradient(to top right, transparent 50%, var(--timeline-gray-text) 50%);
 }
 
 /**** Add Background Color To Event Holder ****/

@@ -25,14 +25,54 @@ function parseDate(date) {
   return `${weekday} - ${day}-${month}-${year}`;
 }
 
-function eventDetailsRender(arg) {
+function renderEventDetails(arg) {
+  const start = new Date(arg.event.start);
+  const end = new Date(arg.event.end);
+  const diffMs = end - start;
+
+  const diffMins = Math.floor(diffMs / (1000 * 60));
+  const hours = Math.floor(diffMins / 60);
+  const minutes = diffMins % 60;
+
+  const durationStr = `${hours}h ${minutes.toString().padStart(2, "0")}m`;
+  arg.event.extendedProps.duration = durationStr;
+
   return {
-    html: `<div class="event-disp">
+    html: `<div class='event-disp-container'>
+            <div class="event-disp">
                 <p><span class="event-emp-id">${arg.event.extendedProps.employeeID}</span>${arg.event.extendedProps.employeeName}</p>
                 <p>${arg.event.extendedProps.address}</p>
                 <p>${arg.event.extendedProps.careerType}</p>
-                <p>4h 00m</p>
-            </div>`,
+                <p>${arg.event.extendedProps.duration}</p>
+            </div>
+            <div class="event-desc">
+                <p class="event-desc-id">${arg.event.extendedProps.employeeID}</p>
+                <p>12/11/2025 - 18/11/2025</p>
+                <div class="event-desc-grid">
+                  <p>Address (Work Order)</p>
+                  <p>${arg.event.extendedProps.address}</p>
+                   <p>Resources</p>
+                  <p>${arg.event.extendedProps.careerType}</p>
+                  <p>Booking Status</p>
+                  <p>${arg.event.extendedProps.bookingStatus}</p>
+                </div>
+            </div>
+    </div>
+            `,
+  };
+}
+
+function renderResources(info) {
+  return {
+    html: `<div class="person-details">
+        <div class="profile-img">
+          <img src="${info.resource.extendedProps.imgUrl}" alt="">
+        </div>
+        <div class="person-info">   
+          <h5>${info.resource.extendedProps.name}</h5>
+          <p>(${info.resource.extendedProps.totalTime} booked)</p>
+        </div>
+      </div>`,
   };
 }
 
@@ -53,147 +93,162 @@ function debounce(func, delay) {
 }
 
 function getResources() {
-  var data = [
+  return [
     {
       id: 1,
-      name: "Emma Collins",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R1.jpg",
+      extendedProps: {
+        name: "Diana Alexiou",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R1.jpg",
+      },
     },
     {
       id: 2,
-      name: "James Fletcher",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R2.jpg",
+      extendedProps: {
+        name: "Olivia Clarke",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R2.jpg",
+      },
     },
     {
       id: 3,
-      name: "Thomas Bennett",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R3.jpg",
+      extendedProps: {
+        name: "Liam Bennett",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R3.jpg",
+      },
     },
     {
       id: 4,
-      name: "Sophie Hayes",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R4.jpg",
+      extendedProps: {
+        name: "Mia Walker",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R4.jpg",
+      },
     },
     {
       id: 5,
-      name: "Lucy Hammond",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R5.jpg",
+      extendedProps: {
+        name: "Ethan Johnson",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R5.jpg",
+      },
     },
     {
       id: 6,
-      name: "Sophie Hayes",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R6.jpg",
+      extendedProps: {
+        name: "Chloe Walker",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R6.jpg",
+      },
     },
     {
       id: 7,
-      name: "Henry Blake",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R7.jpg",
+      extendedProps: {
+        name: "Noah Carter",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R7.jpg",
+      },
     },
     {
       id: 8,
-      name: "Freya Dawson",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R8.jpg",
+      extendedProps: {
+        name: "Grace Foster",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R8.jpg",
+      },
     },
     {
       id: 9,
-      name: "Elliot Brooks",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R9.jpg",
-    },
-
-    {
-      id: 1,
-      name: "Emma Collins",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R1.jpg",
+      extendedProps: {
+        name: "Oscar Hughes",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R9.jpg",
+      },
     },
     {
-      id: 2,
-      name: "James Fletcher",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R2.jpg",
+      id: 10,
+      extendedProps: {
+        name: "Liam Carter",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R1.jpg",
+      },
     },
     {
-      id: 3,
-      name: "Thomas Bennett",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R3.jpg",
+      id: 11,
+      extendedProps: {
+        name: "Ava Reynolds",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R2.jpg",
+      },
     },
     {
-      id: 4,
-      name: "Sophie Hayes",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R4.jpg",
+      id: 12,
+      extendedProps: {
+        name: "Freya Dawson",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R3.jpg",
+      },
     },
     {
-      id: 5,
-      name: "Lucy Hammond",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R5.jpg",
+      id: 13,
+      extendedProps: {
+        name: "Sienna Brooks",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R4.jpg",
+      },
     },
     {
-      id: 6,
-      name: "Sophie Hayes",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R6.jpg",
+      id: 14,
+      extendedProps: {
+        name: "Leo Murphy",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R5.jpg",
+      },
     },
     {
-      id: 7,
-      name: "Henry Blake",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R7.jpg",
+      id: 15,
+      extendedProps: {
+        name: "Lily Morgan",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R6.jpg",
+      },
     },
     {
-      id: 8,
-      name: "Freya Dawson",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R8.jpg",
+      id: 16,
+      extendedProps: {
+        name: "Elliot Brooks",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R7.jpg",
+      },
     },
     {
-      id: 9,
-      name: "Elliot Brooks",
-      totalTime: "244h 29m booked",
-      imgUrl: "Assets/profiles/R9.jpg",
+      id: 17,
+      extendedProps: {
+        name: "Mason Green",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R8.jpg",
+      },
+    },
+    {
+      id: 18,
+      extendedProps: {
+        name: "Isla Matthews",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R9.jpg",
+      },
     },
   ];
-
-  data.forEach((person) => {
-    person.title = {
-      html: `
-    <div class="person-details">
-      <div class="profile-img">
-        <img src="${person.imgUrl}" alt="">
-      </div>
-      <div class="person-info">   
-        <h5>${person.name}</h5>
-        <p>(${person.totalTime} booked)</p>
-      </div>
-    </div>
-  `,
-    };
-  });
-
-  return data;
 }
 
 function getEvents() {
   return [
     {
       resourceId: "1",
-      title: `<h1>Local Test Event</h1>`,
-      start: "2025-07-23 10:00:00",
-      end: "2025-07-23 12:00:00",
+      start: new Date("2025-07-23T10:45:00+05:30"),
+      end: new Date("2025-07-23T12:00:00+05:30"),
       id: "123",
       type: "Full",
-
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -201,72 +256,281 @@ function getEvents() {
       extendedProps: {
         employeeID: "100123",
         employeeName: "Diana Alexiou",
-        address: "200 Campbell Parade, Bondi Beach N",
+        address: "12 King Street, Newtown NSW 2042",
         careerType: "Care Type xyz",
+        bookingStatus: "Scheduled",
       },
     },
     {
       resourceId: "2",
-      title: "Local Test Event -2",
-      start: "2025-07-23 10:00:00",
-      end: "2025-07-23 11:00:00",
+      start: new Date("2025-07-23T10:00:00+05:30"),
+      end: new Date("2025-07-23T10:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
       className: ["ec-event-gray"],
       extendedProps: {
-        employeeID: "100123",
-        employeeName: "Diana Alexiou",
-        address: "200 Campbell Parade, Bondi Beach N",
+        employeeID: "100124",
+        employeeName: "Olivia Clarke",
+        address: "100 Elizabeth St, Sydney NSW",
         careerType: "Care Type xyz",
+        bookingStatus: "Scheduled",
       },
     },
-
     {
       resourceId: "3",
-      title: "Local Test Event",
-      start: "2025-07-23 09:30:00",
-      end: "2025-07-23 13:00:00",
+      start: new Date("2025-07-23T13:30:00+05:30"),
+      end: new Date("2025-07-23T15:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
       className: ["ec-event-active"],
       extendedProps: {
-        employeeID: "100123",
-        employeeName: "Diana Alexiou",
-        address: "200 Campbell Parade, Bondi Beach N",
+        employeeID: "100125",
+        employeeName: "Liam Bennett",
+        address: "34 Pitt Street, Redfern NSW",
         careerType: "Care Type xyz",
+        bookingStatus: "Completed",
       },
     },
     {
       resourceId: "4",
-      start: "2025-07-23 9:45:00",
-      end: "2025-07-23 10:45:00",
+      start: new Date("2025-07-23T09:45:00+05:30"),
+      end: new Date("2025-07-23T10:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
       className: ["ec-event-pink"],
       extendedProps: {
-        employeeID: "1001234",
-        employeeName: "Diana Alexiou",
-        address: "200 Campbell Parade, Bondi Beach N",
+        employeeID: "100126",
+        employeeName: "Mia Walker",
+        address: "77 George St, The Rocks NSW",
         careerType: "Care Type xyz",
+        bookingStatus: "Completed",
       },
     },
     {
       resourceId: "5",
-      title: "<h1>Local Test Event - 5</h1>",
-      start: "2025-07-23 12:00:00",
-      end: "2025-07-23 13:00:00",
+      start: new Date("2025-07-23T12:00:00+05:30"),
+      end: new Date("2025-07-23T13:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
-      className: ["ec-event-yellow "],
+      className: ["ec-event-yellow"],
       extendedProps: {
-        employeeID: "100123",
-        employeeName: "Diana Alexiou",
-        address: "200 Campbell Parade, Bondi Beach N",
+        employeeID: "100127",
+        employeeName: "Ethan Johnson",
+        address: "22 Oxford St, Darlinghurst NSW",
         careerType: "Care Type xyz",
+        bookingStatus: "Completed",
+      },
+    },
+    {
+      resourceId: "6",
+      start: new Date("2025-07-23T08:00:00+05:30"),
+      end: new Date("2025-07-23T09:30:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-gray"],
+      extendedProps: {
+        employeeID: "100128",
+        employeeName: "Chloe Walker",
+        address: "5 High Street, Parramatta NSW",
+        careerType: "Care Type A",
+        bookingStatus: "Scheduled",
+      },
+    },
+    {
+      resourceId: "7",
+      start: new Date("2025-07-23T10:00:00+05:30"),
+      end: new Date("2025-07-23T11:15:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100129",
+        employeeName: "Noah Carter",
+        address: "88 Victoria Rd, Rydalmere NSW",
+        careerType: "Care Type B",
+        bookingStatus: "Scheduled",
+      },
+    },
+    {
+      resourceId: "8",
+      start: new Date("2025-07-23T11:30:00+05:30"),
+      end: new Date("2025-07-23T13:00:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-yellow"],
+      extendedProps: {
+        employeeID: "100130",
+        employeeName: "Grace Foster",
+        address: "33 Norton St, Leichhardt NSW",
+        careerType: "Care Type C",
+        bookingStatus: "Completed",
+      },
+    },
+    {
+      resourceId: "9",
+      start: new Date("2025-07-23T13:15:00+05:30"),
+      end: new Date("2025-07-23T14:45:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-pink"],
+      extendedProps: {
+        employeeID: "100131",
+        employeeName: "Oscar Hughes",
+        address: "50 King St, Mascot NSW",
+        careerType: "Care Type D",
+        bookingStatus: "Completed",
+      },
+    },
+    {
+      resourceId: "10",
+      start: new Date("2025-07-23T09:00:00+05:30"),
+      end: new Date("2025-07-23T10:30:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100132",
+        employeeName: "Liam Carter",
+        address: "120 George St, Liverpool NSW",
+        careerType: "Care Type A",
+        bookingStatus: "Scheduled",
+      },
+    },
+    {
+      resourceId: "11",
+      start: new Date("2025-07-23T14:00:00+05:30"),
+      end: new Date("2025-07-23T15:00:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-yellow"],
+      extendedProps: {
+        employeeID: "100133",
+        employeeName: "Ava Reynolds",
+        address: "78 Campbell St, Surry Hills NSW",
+        careerType: "Care Type B",
+        bookingStatus: "Completed",
+      },
+    },
+    {
+      resourceId: "12",
+      start: new Date("2025-07-23T10:45:00+05:30"),
+      end: new Date("2025-07-23T12:00:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-pink"],
+      extendedProps: {
+        employeeID: "100134",
+        employeeName: "Freya Dawson",
+        address: "101 Queen St, Beaconsfield NSW",
+        careerType: "Care Type C",
+        bookingStatus: "Scheduled",
+      },
+    },
+    {
+      resourceId: "13",
+      start: new Date("2025-07-23T08:30:00+05:30"),
+      end: new Date("2025-07-23T09:30:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-gray"],
+      extendedProps: {
+        employeeID: "100135",
+        employeeName: "Sienna Brooks",
+        address: "43 Main St, Zetland NSW",
+        careerType: "Care Type D",
+        bookingStatus: "Scheduled",
+      },
+    },
+    {
+      resourceId: "14",
+      start: new Date("2025-07-23T15:00:00+05:30"),
+      end: new Date("2025-07-23T16:30:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100136",
+        employeeName: "Leo Murphy",
+        address: "67 Bridge Rd, Glebe NSW",
+        careerType: "Care Type A",
+        bookingStatus: "Completed",
+      },
+    },
+    {
+      resourceId: "15",
+      start: new Date("2025-07-23T13:00:00+05:30"),
+      end: new Date("2025-07-23T14:00:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-yellow"],
+      extendedProps: {
+        employeeID: "100137",
+        employeeName: "Lily Morgan",
+        address: "19 Stanley St, Darlinghurst NSW",
+        careerType: "Care Type B",
+        bookingStatus: "Scheduled",
+      },
+    },
+    {
+      resourceId: "16",
+      start: new Date("2025-07-23T11:15:00+05:30"),
+      end: new Date("2025-07-23T12:45:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-pink"],
+      extendedProps: {
+        employeeID: "100138",
+        employeeName: "Elliot Brooks",
+        address: "55 Bay St, Botany NSW",
+        careerType: "Care Type C",
+        bookingStatus: "Completed",
+      },
+    },
+    {
+      resourceId: "17",
+      start: new Date("2025-07-23T08:45:00+05:30"),
+      end: new Date("2025-07-23T10:00:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-gray"],
+      extendedProps: {
+        employeeID: "100139",
+        employeeName: "Mason Green",
+        address: "66 Clarence St, Sydney NSW",
+        careerType: "Care Type D",
+        bookingStatus: "Scheduled",
+      },
+    },
+    {
+      resourceId: "18",
+      start: new Date("2025-07-23T14:15:00+05:30"),
+      end: new Date("2025-07-23T15:30:00+05:30"),
+      editable: false,
+      durationEditable: false,
+      eventStartEditable: false,
+      className: ["ec-event-active"],
+      extendedProps: {
+        employeeID: "100140",
+        employeeName: "Isla Matthews",
+        address: "20 Regent St, Chippendale NSW",
+        careerType: "Care Type A",
+        bookingStatus: "Completed",
       },
     },
   ];
@@ -278,7 +542,7 @@ function filterResources(query) {
 
   if (query) {
     filteredResources = allResources.filter((resource) =>
-      resource.name.toLowerCase().includes(query)
+      resource.extendedProps.name.toLowerCase().includes(query)
     );
   }
   upadateResources(filteredResources);
@@ -289,8 +553,8 @@ function createSorter() {
 
   return function () {
     const sorted = getResources().sort((a, b) => {
-      const valA = a.name.toLowerCase();
-      const valB = b.name.toLowerCase();
+      const valA = a.extendedProps.name.toLowerCase();
+      const valB = b.extendedProps.name.toLowerCase();
 
       if (valA < valB) return ascending ? -1 : 1;
       if (valA > valB) return ascending ? 1 : -1;
@@ -302,7 +566,7 @@ function createSorter() {
   };
 }
 
-function renderSearch(info) {
+function renderSearch() {
   const sidebarTitle = document.querySelector(".ec-sidebar-title");
   if (!sidebarTitle) return;
 
@@ -369,7 +633,9 @@ function createCalendar() {
     resources: getResources(),
 
     dayHeaderFormat: parseDate,
-    eventContent: eventDetailsRender,
+    eventContent: renderEventDetails,
+
+    resourceLabelContent: renderResources,
 
     // titleFormat: (start, end) => parseDate(start),
 
@@ -379,6 +645,7 @@ function createCalendar() {
     slotMaxTime: "20:00:00",
   });
   window.ecCalendar = ec;
+  console.log(ec.getOption("duration"));
 }
 
 window.addEventListener("DOMContentLoaded", function () {
