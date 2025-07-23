@@ -33,6 +33,22 @@ if (dropdowns.length) {
   });
 }
 
+//Reset Filter Option
+
+document.getElementById("reset").addEventListener("click", function () {
+  const dropdowns = document.querySelectorAll(".custom-dropdown");
+
+  dropdowns.forEach(function (dropdown) {
+    const disp = dropdown.querySelector(".value-display");
+    if (disp) {
+      disp.textContent = "Select an option";
+    }
+
+    // Optional: Close dropdown if open
+    dropdown.classList.remove("open");
+  });
+});
+
 // Filter Controller
 var gridContainerEl = getElement(".grid-container");
 var filterBtn = getElement("#filter-btn");
@@ -89,5 +105,3 @@ if (typeof $ !== "undefined" && typeof $.fn.daterangepicker !== "undefined") {
 } else {
   console.warn("jQuery or daterangepicker not loaded.");
 }
-
-

@@ -9,6 +9,14 @@
  */
 var EventCalendar = window.EventCalendar;
 
+// --- FILTER/SEARCH STATE ---
+let filterState = {
+  region: null,
+  worktype: null,
+  search: "",
+  sortAsc: true,
+};
+
 function getById(id) {
   return document.getElementById(id);
 }
@@ -63,6 +71,15 @@ function renderEventDetails(arg) {
 }
 
 function renderResources(info) {
+  const props = info?.resource?.extendedProps;
+
+  // Validate required fields
+  if (!props || !props.imgUrl || !props.name || !props.totalTime) {
+    return {
+      html: `<div class="person-details">No Content</div>`,
+    };
+  }
+
   return {
     html: `<div class="person-details">
         <div class="profile-img">
@@ -76,9 +93,104 @@ function renderResources(info) {
   };
 }
 
+// --- FILTER/SEARCH CORE LOGIC ---
+function getFilteredEventIds() {
+  const events = getEvents();
+  return events
+    .filter((ev) => {
+      let match = true;
+      if (filterState.region && filterState.region !== "Select an option") {
+        match = match && ev.extendedProps.region === filterState.region;
+      }
+      if (filterState.worktype && filterState.worktype !== "Select an option") {
+        match = match && ev.extendedProps.eventType === filterState.worktype;
+      }
+      return match;
+    })
+    .map((ev) => String(ev.resourceId));
+}
+
+function getFilteredAndSearchedResources() {
+  const allResources = getResources();
+  const filteredEventIds = getFilteredEventIds();
+  let filteredResources = allResources.filter((res) =>
+    filteredEventIds.includes(String(res.id))
+  );
+
+  // Search
+  if (filterState.search) {
+    filteredResources = filteredResources.filter((res) =>
+      res.extendedProps.name.toLowerCase().includes(filterState.search)
+    );
+  }
+
+  // Sort
+  filteredResources.sort((a, b) => {
+    const valA = a.extendedProps.name.toLowerCase();
+    const valB = b.extendedProps.name.toLowerCase();
+    if (valA < valB) return filterState.sortAsc ? -1 : 1;
+    if (valA > valB) return filterState.sortAsc ? 1 : -1;
+    return 0;
+  });
+
+  // If any filter/search is applied and no match, return empty array
+  const anyFilter =
+    (filterState.region && filterState.region !== "Select an option") ||
+    (filterState.worktype && filterState.worktype !== "Select an option") ||
+    filterState.search;
+  if (anyFilter && filteredResources.length === 0) return [];
+
+  return filteredResources;
+}
+
 function upadateResources(data) {
   if (window.ecCalendar) {
     window.ecCalendar.setOption("resources", data);
+  }
+}
+
+function applyAllFilters() {
+  const filtered = getFilteredAndSearchedResources();
+  upadateResources(filtered);
+}
+
+// --- DROPDOWN & SEARCH HOOKUP ---
+function setupFilterDropdownsAndReset() {
+  // Region
+  const regionDropdown = document.querySelector(
+    '.custom-dropdown label[for="region-filter"]'
+  ).parentElement;
+  const regionOptions = regionDropdown.querySelectorAll(".dropdown-option");
+  regionOptions.forEach((option) => {
+    option.addEventListener("click", function () {
+      filterState.region = option.textContent.trim();
+      applyAllFilters();
+    });
+  });
+  // Worktype
+  const worktypeDropdown = document.querySelector(
+    '.custom-dropdown label[for="work-type-filter"]'
+  ).parentElement;
+  const worktypeOptions = worktypeDropdown.querySelectorAll(".dropdown-option");
+  worktypeOptions.forEach((option) => {
+    option.addEventListener("click", function () {
+      filterState.worktype = option.textContent.trim();
+      applyAllFilters();
+    });
+  });
+  // Reset
+  const resetBtn = document.getElementById("reset");
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function () {
+      filterState.region = null;
+      filterState.worktype = null;
+      filterState.search = "";
+      filterState.sortAsc = true;
+      // Reset search input
+      const searchInput = document.querySelector(".search-input");
+      if (searchInput) searchInput.value = "";
+      applyAllFilters();
+    });
   }
 }
 
@@ -259,6 +371,8 @@ function getEvents() {
         address: "12 King Street, Newtown NSW 2042",
         careerType: "Care Type xyz",
         bookingStatus: "Scheduled",
+        region: "Bankstown",
+        eventType: "Care Worker",
       },
     },
     {
@@ -275,6 +389,8 @@ function getEvents() {
         address: "100 Elizabeth St, Sydney NSW",
         careerType: "Care Type xyz",
         bookingStatus: "Scheduled",
+        region: "Bankstown",
+        eventType: "Care Worker",
       },
     },
     {
@@ -291,6 +407,8 @@ function getEvents() {
         address: "34 Pitt Street, Redfern NSW",
         careerType: "Care Type xyz",
         bookingStatus: "Completed",
+        region: "Bowral",
+        eventType: "Care Worker",
       },
     },
     {
@@ -307,6 +425,8 @@ function getEvents() {
         address: "77 George St, The Rocks NSW",
         careerType: "Care Type xyz",
         bookingStatus: "Completed",
+        region: "Cityeast",
+        eventType: "Care Worker",
       },
     },
     {
@@ -323,6 +443,8 @@ function getEvents() {
         address: "22 Oxford St, Darlinghurst NSW",
         careerType: "Care Type xyz",
         bookingStatus: "Completed",
+        region: "Dural",
+        eventType: "Care Worker",
       },
     },
     {
@@ -339,6 +461,8 @@ function getEvents() {
         address: "5 High Street, Parramatta NSW",
         careerType: "Care Type A",
         bookingStatus: "Scheduled",
+        region: "Hawkesbury",
+        eventType: "Care Worker",
       },
     },
     {
@@ -355,6 +479,8 @@ function getEvents() {
         address: "88 Victoria Rd, Rydalmere NSW",
         careerType: "Care Type B",
         bookingStatus: "Scheduled",
+        region: "Beacon - Blacktown",
+        eventType: "Domestic Assistance Worker",
       },
     },
     {
@@ -371,6 +497,8 @@ function getEvents() {
         address: "33 Norton St, Leichhardt NSW",
         careerType: "Care Type C",
         bookingStatus: "Completed",
+        region: "Bowral",
+        eventType: "Domestic Assistance Worker",
       },
     },
     {
@@ -387,6 +515,8 @@ function getEvents() {
         address: "50 King St, Mascot NSW",
         careerType: "Care Type D",
         bookingStatus: "Completed",
+        region: "Cityeast",
+        eventType: "Domestic Assistance Worker",
       },
     },
     {
@@ -403,6 +533,8 @@ function getEvents() {
         address: "120 George St, Liverpool NSW",
         careerType: "Care Type A",
         bookingStatus: "Scheduled",
+        region: "Dural",
+        eventType: "Domestic Assistance Worker",
       },
     },
     {
@@ -419,6 +551,8 @@ function getEvents() {
         address: "78 Campbell St, Surry Hills NSW",
         careerType: "Care Type B",
         bookingStatus: "Completed",
+        region: "Hawkesbury",
+        eventType: "Domestic Assistance Worker",
       },
     },
     {
@@ -435,6 +569,8 @@ function getEvents() {
         address: "101 Queen St, Beaconsfield NSW",
         careerType: "Care Type C",
         bookingStatus: "Scheduled",
+        region: "Hawkesbury",
+        eventType: "Village Care Worker",
       },
     },
     {
@@ -451,6 +587,8 @@ function getEvents() {
         address: "43 Main St, Zetland NSW",
         careerType: "Care Type D",
         bookingStatus: "Scheduled",
+        region: "Dural",
+        eventType: "Village Care Worker",
       },
     },
     {
@@ -467,6 +605,8 @@ function getEvents() {
         address: "67 Bridge Rd, Glebe NSW",
         careerType: "Care Type A",
         bookingStatus: "Completed",
+        region: "Cityeast",
+        eventType: "Village Care Worker",
       },
     },
     {
@@ -483,6 +623,8 @@ function getEvents() {
         address: "19 Stanley St, Darlinghurst NSW",
         careerType: "Care Type B",
         bookingStatus: "Scheduled",
+        region: "Bowral",
+        eventType: "Village Care Worker",
       },
     },
     {
@@ -499,6 +641,8 @@ function getEvents() {
         address: "55 Bay St, Botany NSW",
         careerType: "Care Type C",
         bookingStatus: "Completed",
+        region: "Beacon - Blacktown",
+        eventType: "Village Care Worker",
       },
     },
     {
@@ -515,6 +659,8 @@ function getEvents() {
         address: "66 Clarence St, Sydney NSW",
         careerType: "Care Type D",
         bookingStatus: "Scheduled",
+        region: "Bankstown",
+        eventType: "Village Care Worker",
       },
     },
     {
@@ -531,6 +677,8 @@ function getEvents() {
         address: "20 Regent St, Chippendale NSW",
         careerType: "Care Type A",
         bookingStatus: "Completed",
+        region: "Bankstown",
+        eventType: "Domestic Assistance Worker",
       },
     },
   ];
@@ -566,6 +714,7 @@ function createSorter() {
   };
 }
 
+// --- SEARCH & SORT HOOKUP ---
 function renderSearch() {
   const sidebarTitle = document.querySelector(".ec-sidebar-title");
   if (!sidebarTitle) return;
@@ -604,14 +753,16 @@ function renderSearch() {
   sidebarTitle.appendChild(sortBtn);
 
   const debouncedFilter = debounce((event) => {
-    const query = event.target.value.trim().toLowerCase();
-    filterResources(query);
+    filterState.search = event.target.value.trim().toLowerCase();
+    applyAllFilters();
   }, 500);
 
   searchInput.addEventListener("keyup", debouncedFilter);
 
-  const sortClickHandker = createSorter();
-  sortBtn.addEventListener("click", sortClickHandker);
+  sortBtn.addEventListener("click", function () {
+    filterState.sortAsc = !filterState.sortAsc;
+    applyAllFilters();
+  });
 }
 
 function createCalendar() {
@@ -634,12 +785,12 @@ function createCalendar() {
 
     dayHeaderFormat: parseDate,
     eventContent: renderEventDetails,
-
     resourceLabelContent: renderResources,
-
+    viewDidMount: renderSearch,
     // titleFormat: (start, end) => parseDate(start),
 
-    viewDidMount: renderSearch,
+    filterResourcesWithEvents: true,
+    filterEventsWithResources: true,
 
     slotMinTime: "9:00:00",
     slotMaxTime: "20:00:00",
@@ -648,8 +799,10 @@ function createCalendar() {
   console.log(ec.getOption("duration"));
 }
 
+// --- INIT ---
 window.addEventListener("DOMContentLoaded", function () {
   createCalendar();
+  setupFilterDropdownsAndReset();
   // Today BTN
   var todayBtn = getById("today-btn");
   if (todayBtn) {
