@@ -25,6 +25,33 @@ function parseDate(date) {
   return `${weekday} - ${day}-${month}-${year}`;
 }
 
+function eventDetailsRender(arg) {
+  return {
+    html: `<div class="event-disp">
+                <p><span class="event-emp-id">${arg.event.extendedProps.employeeID}</span>${arg.event.extendedProps.employeeName}</p>
+                <p>${arg.event.extendedProps.address}</p>
+                <p>${arg.event.extendedProps.careerType}</p>
+                <p>4h 00m</p>
+            </div>`,
+  };
+}
+
+function upadateResources(data) {
+  if (window.ecCalendar) {
+    window.ecCalendar.setOption("resources", data);
+  }
+}
+
+function debounce(func, delay) {
+  let timer;
+  return function (...args) {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
 function getResources() {
   var data = [
     {
@@ -162,10 +189,11 @@ function getEvents() {
     {
       resourceId: "1",
       title: `<h1>Local Test Event</h1>`,
-      start: "2025-07-22 10:00:00",
+      start: "2025-07-23 10:00:00",
       end: "2025-07-23 12:00:00",
       id: "123",
       type: "Full",
+
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -173,32 +201,32 @@ function getEvents() {
       extendedProps: {
         employeeID: "100123",
         employeeName: "Diana Alexiou",
-        address: "12, ",
-        careerType: "Care Type",
+        address: "200 Campbell Parade, Bondi Beach N",
+        careerType: "Care Type xyz",
       },
     },
     {
       resourceId: "2",
       title: "Local Test Event -2",
-      start: "2025-07-22 10:00:00",
-      end: "2025-07-22 11:00:00",
+      start: "2025-07-23 10:00:00",
+      end: "2025-07-23 11:00:00",
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
-      className: ["ec-event-active"],
+      className: ["ec-event-gray"],
       extendedProps: {
         employeeID: "100123",
         employeeName: "Diana Alexiou",
-        address: "12, ",
-        careerType: "Care Type",
+        address: "200 Campbell Parade, Bondi Beach N",
+        careerType: "Care Type xyz",
       },
     },
 
     {
       resourceId: "3",
       title: "Local Test Event",
-      start: "2025-07-22 09:30:00",
-      end: "2025-07-22 13:00:00",
+      start: "2025-07-23 09:30:00",
+      end: "2025-07-23 13:00:00",
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -206,43 +234,120 @@ function getEvents() {
       extendedProps: {
         employeeID: "100123",
         employeeName: "Diana Alexiou",
-        address: "12, ",
-        careerType: "Care Type",
+        address: "200 Campbell Parade, Bondi Beach N",
+        careerType: "Care Type xyz",
       },
     },
     {
       resourceId: "4",
-      title: "Local Test Event",
-      start: "2025-07-22 9:45:00",
-
+      start: "2025-07-23 9:45:00",
+      end: "2025-07-23 10:45:00",
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
-      className: ["ec-event-active"],
+      className: ["ec-event-pink"],
       extendedProps: {
-        employeeID: "100123",
+        employeeID: "1001234",
         employeeName: "Diana Alexiou",
-        address: "12, ",
-        careerType: "Care Type",
+        address: "200 Campbell Parade, Bondi Beach N",
+        careerType: "Care Type xyz",
       },
     },
     {
       resourceId: "5",
       title: "<h1>Local Test Event - 5</h1>",
-      start: "2025-07-22 12:00:00",
-      end: "2025-07-22 13:00:00",
+      start: "2025-07-23 12:00:00",
+      end: "2025-07-23 13:00:00",
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
-      className: ["ec-event-active"],
+      className: ["ec-event-yellow "],
       extendedProps: {
         employeeID: "100123",
         employeeName: "Diana Alexiou",
-        address: "12, ",
-        careerType: "Care Type",
+        address: "200 Campbell Parade, Bondi Beach N",
+        careerType: "Care Type xyz",
       },
     },
   ];
+}
+
+function filterResources(query) {
+  const allResources = getResources();
+  let filteredResources = allResources;
+
+  if (query) {
+    filteredResources = allResources.filter((resource) =>
+      resource.name.toLowerCase().includes(query)
+    );
+  }
+  upadateResources(filteredResources);
+}
+
+function createSorter() {
+  let ascending = true;
+
+  return function () {
+    const sorted = getResources().sort((a, b) => {
+      const valA = a.name.toLowerCase();
+      const valB = b.name.toLowerCase();
+
+      if (valA < valB) return ascending ? -1 : 1;
+      if (valA > valB) return ascending ? 1 : -1;
+      return 0;
+    });
+
+    ascending = !ascending;
+    upadateResources(sorted);
+  };
+}
+
+function renderSearch(info) {
+  const sidebarTitle = document.querySelector(".ec-sidebar-title");
+  if (!sidebarTitle) return;
+
+  // Create container for search
+  const searchContainer = document.createElement("div");
+  searchContainer.classList.add("search-container");
+
+  // Create search input
+  const searchInput = document.createElement("input");
+  searchInput.type = "text";
+  searchInput.name = "search-input";
+  searchInput.placeholder = "Search resources";
+  searchInput.classList.add("search-input");
+
+  // Create search icon (optional)
+  const searchIcon = document.createElement("img");
+  searchIcon.src = "Assets/icons/search.svg";
+  searchIcon.alt = "Search";
+  searchIcon.classList.add("search-icon");
+
+  // Create sort btn (optional)
+  const sortBtn = document.createElement("button");
+  const sortIcon = document.createElement("img");
+  sortIcon.src = "Assets/icons/swap.svg";
+  sortIcon.alt = "Sort";
+  sortBtn.classList.add("sort-btn");
+  sortBtn.appendChild(sortIcon);
+
+  // Append input and icon to container
+  searchContainer.appendChild(searchIcon);
+  searchContainer.appendChild(searchInput);
+
+  // Append search container to sidebar
+  sidebarTitle.appendChild(searchContainer);
+  sidebarTitle.appendChild(sortBtn);
+
+  const debouncedFilter = debounce((event) => {
+    const query = event.target.value.trim().toLowerCase();
+    filterResources(query);
+  }, 500);
+
+  searchInput.addEventListener("keyup", debouncedFilter);
+
+  const sortClickHandker = createSorter();
+  sortBtn.addEventListener("click", sortClickHandker);
 }
 
 function createCalendar() {
@@ -256,17 +361,19 @@ function createCalendar() {
     initialView: "resourceTimelineDay",
     slotWidth: "249",
     slotHeight: "88",
+    headerToolbar: false,
     editable: false,
     durationEditable: false,
     eventStartEditable: false,
     events: getEvents(),
     resources: getResources(),
 
-    dayHeaderFormat: (date) => parseDate(date),
+    dayHeaderFormat: parseDate,
+    eventContent: eventDetailsRender,
 
-    eventContent: (arg) => eventDetailsRender(arg),
+    // titleFormat: (start, end) => parseDate(start),
 
-    titleFormat: (start, end) => parseDate(start),
+    viewDidMount: renderSearch,
 
     slotMinTime: "9:00:00",
     slotMaxTime: "20:00:00",
@@ -301,14 +408,3 @@ window.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-function eventDetailsRender(arg) {
-  return {
-    html: `<div class="event-disp">
-                <p><span class="event-emp-id">${arg.event.extendedProps.employeeID}</span>${arg.event.extendedProps.employeeName}</p>
-                <p>${arg.event.extendedProps.address}</p>
-                <p>${arg.event.extendedProps.careerType}</p>
-                <p>4h 00m</p>
-            </div>`,
-  };
-}

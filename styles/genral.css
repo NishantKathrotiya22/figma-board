@@ -15,24 +15,24 @@
     --timeline-text: #6693C9;
 
     /* === Timeline Yellow Variant === */
-    --timeline-yellow-bg: #F9F1D0;
     --timeline-yellow-text: #FFBB00;
+    --timeline-yellow-bg: #F9E398;
+    --timeline-container-yellow-bg: #F9F1D0;
 
     /* === No Leave Timeline === */
     --no-leave-bg: #1181D6;
     --no-leave-text: #1181D6;
     --no-leave-border-color: #1181D6;
 
-    /* === Sick Leave Timeline === */
-    --sick-leave-bg: rgba(250, 102, 121, 0.3);
-    /* 30% opacity */
-    --sick-leave-active-bg: #FA6679;
-    /* full opacity */
-    --sick-leave-task-bg: #FA4C69;
+    /* === Pink Color Variant  === */
+    --timeline-pink-text: #FA4C69;
+    --timeline-pink-bg: #FB8194;
+    --timeline-container-pink-bg: #FCD0D5;
 
-    /* === No Conflict Sick Leave === */
-    --no-conflict-sick-leave-bg: #D7D7D7;
-    --no-conflict-sick-leave-text: #979797;
+    /* === Gray Color Variant === */
+    --timeline-gray-text: #979797;
+    --timeline-gray-bg: #CFCFCF;
+    --timeline-container-gray-bg: #D7D7D7;
 
     /* === Scroll and Borders === */
     --scrollbar-color: #DCE6F3;

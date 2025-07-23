@@ -89,3 +89,5 @@ if (typeof $ !== "undefined" && typeof $.fn.daterangepicker !== "undefined") {
 } else {
   console.warn("jQuery or daterangepicker not loaded.");
 }
+
+

@@ -247,6 +247,52 @@ select:focus>option:hover {
 }
 
 
+/***** Fitting Serach Container at .ec-sidebar-title  *****/
+
+.ec-header>.ec-days>.ec-day {
+    margin-top: 0.8rem !important;
+}
+
+.ec-toolbar {
+    display: none;
+}
+
+.ec-sidebar-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    font-size: 1.4rem;
+    color: var(--text-dark) !important;
+}
+
+.search-container {
+    width: 75% !important;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0.5rem;
+    border: 1px solid var(--border-color);
+}
+
+.search-input,
+.sort-btn {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.sort-btn {
+    height: fit-content;
+    width: fit-content;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.sort-btn img {
+    height: 2.4rem;
+    width: 2.4rem;
+}
 
 
 /***** Resource Styling *****/
@@ -289,7 +335,9 @@ select:focus>option:hover {
     color: var(--text-light-2);
 }
 
-/***** Removing All Default Styling (Specially Border)  ********/
+/* ========================================================
+   Resetting Layout for Core Calendar Elements
+   ======================================================== */
 .ec-body,
 .ec-sidebar,
 .ec-header,
@@ -300,13 +348,15 @@ select:focus>option:hover {
 .ec-day-head,
 .ec-days {
     padding: 0 !important;
-    border: none !important;
     margin: 0 !important;
+    border: none !important;
     box-sizing: content-box !important;
-    /* box-sizing: border-box !important; */
+    /* Use border-box if more appropriate */
 }
 
-/***** Setting Height to Timeline as well as Resource  ********/
+/* ========================================================
+   Uniform Height for Timeline, Events, and Resources
+   ======================================================== */
 .ec-time-grid .ec-time,
 .ec-time-grid .ec-line,
 .ec-event,
@@ -320,40 +370,48 @@ select:focus>option:hover {
     flex-basis: 0 !important;
 }
 
-
-/***** Forcing Resources to not to Squiz (Width Specially)  ********/
+/* ========================================================
+   Prevent Resources from Being Compressed Horizontally
+   ======================================================== */
 .ec-resource,
 .ec-resource>span,
 .ec-resource>span>.person-details {
+    width: 249px !important;
     height: 8rem !important;
     padding: 0 !important;
     margin: 0 !important;
     flex-basis: 0 !important;
-    width: 249px;
 }
 
-/* Responsible Column Width  */
+/* ========================================================
+   Timeline Column Width (Time Labels & Lines)
+   ======================================================== */
 .ec-timeline .ec-time,
 .ec-timeline .ec-line {
     width: 249px !important;
 }
 
+/* ========================================================
+   Days & Resources Height Consistency
+   ======================================================== */
 .ec-resource,
 .ec-days {
     height: 8rem !important;
     padding: 0 !important;
 }
 
-
-
-
-/****  Fixing the Header height *****/
-
-.ec-header>.ec-days>.ec-day,
-.ec-header>.ec-days {
-    height: max-content !important;
+/* ========================================================
+   Header Styling
+   ======================================================== */
+.ec-header>.ec-days,
+.ec-header>.ec-days>.ec-day {
+    /* height: max-content !important; */
+    height: 5.6rem !important;
 }
 
+/* ========================================================
+   Time Labels and Day Headers (Typography)
+   ======================================================== */
 .ec-times .ec-time,
 .ec-header .ec-day-head {
     font-size: 1.4rem;
@@ -363,29 +421,27 @@ select:focus>option:hover {
     color: var(--text-toolbar);
 }
 
-.ec-day-head{
+.ec-day-head {
     font-weight: 500 !important;
 }
 
 
-/* ec-days Resposible for vertical Sepration  */
 
-/* .ec-resource Responsible for borer between Resources  */
+/* ========================================================
+   RESPONSIBILITY COMMENTS FOR KEY COMPONENTS
+   ======================================================== */
+/*
+  - .ec-days         → Responsible for vertical separation between days
+  - .ec-resource     → Adds border between resources (horizontal lines)
+  - .ec-time         → Separates time notations
+  - .ec-times        → Separation above time notations
+  - .ec-line::after  → Adds vertical dashed lines (ec-line is the parent)
+*/
 
-/* .ec-time Resposibe for sepration between time notation  */
-
-/* .ec-times Resposibe for sepration above time notation  */
-
-/* .ec-line::after Responsible For Verticle Sepration (.ec-lines is parant of it) */
-
+/* Right dashed line between resources */
 
 .ec-timeline .ec-sidebar .ec-resource {
     border-right: 3px dashed var(--border-color) !important;
-}
-
-
-/**** Sepration Line Below Each Resources ****/
-.ec-timeline .ec-sidebar .ec-resource {
     border-top: 3px solid var(--border-color) !important;
 }
 
@@ -396,11 +452,11 @@ select:focus>option:hover {
 
 .ec-resource:last-child .person-details::after {
     content: "";
-    width: 100%;
-    height: 3px;
     position: absolute !important;
-    border-bottom: 3px solid var(--border-color);
     bottom: -3px;
+    height: 3px;
+    width: 100%;
+    border-bottom: 3px solid var(--border-color);
 }
 
 
@@ -422,15 +478,23 @@ select:focus>option:hover {
     border-left: 3px dashed var(--border-color);
 }
 
+.ec-sidebar-title {
+    border-right: 3px dashed var(--border-color) !important;
+}
+
+/* ========================================================
+   Canvas Body: Horizontal Separation Between Day Rows
+   ======================================================== */
+
 /***** Horizontal Sepration Line in canvas *****/
 .ec-body .ec-days {
     border-top: 3px dashed var(--border-color) !important;
 }
 
 
-
+/***** Last Line Under Event *****/
 .ec-days:last-child {
-    border-bottom: 3px dashed var(--border-color) !important;
+    border-bottom: 3px solid var(--border-color) !important;
 }
 
 /***** Calendar BG Color *****/
@@ -438,6 +502,10 @@ select:focus>option:hover {
     background-color: transparent !important;
 }
 
+
+/* ========================================================
+                        Timeline Stylings
+   ======================================================== */
 
 /***** Genral Timeline Style  *****/
 .ec-event {
@@ -464,10 +532,69 @@ select:focus>option:hover {
     margin-right: 2rem;
 }
 
-/*****  Timeline Vartiations *****/
+
+/* ========================================================
+                        Timeline Vartiations
+   ======================================================== */
+
+
+/*****  Active Timeline (Blue) *****/
 .ec-event-active {
     background-color: var(--timeline-bg) !important;
     border-left: 3px solid var(--timeline-text);
     color: var(--timeline-text);
-    height: 100% !important;
+}
+
+/**** Add Background Color To Event Holder ****/
+
+/* .ec-events:has(.ec-event-active) {
+      background-color: #c2ddff9d !important;
+} */
+
+
+
+
+/*****  Active Timeline (Yellow) *****/
+.ec-event-yellow {
+    background-color: var(--timeline-yellow-bg) !important;
+    border-left: 3px solid var(--timeline-yellow-text);
+    color: var(--timeline-yellow-text);
+}
+
+/**** Add Background Color To Event Holder ****/
+
+.ec-events:has(.ec-event-yellow) {
+    background-color: var(--timeline-container-yellow-bg) !important;
+}
+
+
+
+
+/*****  Active Timeline (Pink) *****/
+.ec-event-pink {
+    background-color: var(--timeline-pink-bg) !important;
+    border-left: 3px solid var(--timeline-pink-text);
+    color: var(--timeline-pink-text);
+}
+
+/**** Add Background Color To Event Holder ****/
+
+.ec-events:has(.ec-event-pink) {
+    background-color: var(--timeline-container-pink-bg) !important;
+}
+
+
+
+
+/*****  Active Timeline (Gray) *****/
+.ec-event-gray {
+    background-color: var(--timeline-gray-bg) !important;
+    border-left: 3px solid var(--timeline-gray-text);
+    color: var(--timeline-gray-text);
+}
+
+/**** Add Background Color To Event Holder ****/
+
+.ec-events:has(.ec-event-gray) {
+    background-color: var(--timeline-container-gray-bg) !important;
 }
