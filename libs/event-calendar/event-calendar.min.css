@@ -371,6 +371,9 @@
     background-color: var(--ec-accent-color)
 }
 
+
+
+
 .ec-hidden-scroll {
     display: none;
     overflow-y: scroll;

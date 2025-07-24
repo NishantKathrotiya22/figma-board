@@ -58,14 +58,14 @@ var ecHolderEl = getElement(".ec-holder");
 if (filterBtn && gridContainerEl) {
   filterBtn.addEventListener("click", function () {
     gridContainerEl.classList.toggle("hide-filter");
-    ecHolderEl.classList.toggle("p-2");
+    // ecHolderEl.classList.toggle("p-2");
   });
 }
 
 if (filterClose && gridContainerEl) {
   filterClose.addEventListener("click", function () {
     gridContainerEl.classList.add("hide-filter");
-    ecHolderEl.classList.add("p-2");
+    // ecHolderEl.classList.add("p-2");
   });
 }
 
