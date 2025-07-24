@@ -33,11 +33,50 @@ function parseDate(date) {
   return `${weekday} - ${day}-${month}-${year}`;
 }
 
+// function renderTooltipContent(arg) {
+//   return `<div>
+//                 <p class='tool-title'>${arg.event.extendedProps.employeeID}</p>
+//                 <p>12/11/2025 - 18/11/2025</p>
+//             </div>`;
+// }
+
+function renderTooltipContent(arg) {
+  return `
+    <div class="custom-tooltip-content">
+      <p class="event-desc-id">${arg.event.extendedProps.employeeID}</p>
+      <p>12/11/2025 - 18/11/2025</p>
+      <div class="event-desc-grid">
+        <p>Address (Work Order)</p>
+        <p>${arg.event.extendedProps.address}</p>
+        <p>Resources</p>
+        <p>${arg.event.extendedProps.careerType}</p>
+        <p>Booking Status</p>
+        <p>${arg.event.extendedProps.bookingStatus}</p>
+      </div>
+    </div>
+  `;
+}
+
+/*
+<div>
+    <p class="event-desc-id">${arg.event.extendedProps.employeeID}</p>
+    <p>12/11/2025 - 18/11/2025</p>
+    <div class="event-desc-grid">
+      <p>Address (Work Order)</p>
+      <p>${arg.event.extendedProps.address}</p>
+      <p>Resources</p>
+      <p>${arg.event.extendedProps.careerType}</p>
+      <p>Booking Status</p>
+      <p>${arg.event.extendedProps.bookingStatus}</p>
+    </div>
+</div>
+
+
+*/
 function renderEventDetails(arg) {
   const start = new Date(arg.event.start);
   const end = new Date(arg.event.end);
   const diffMs = end - start;
-
   const diffMins = Math.floor(diffMs / (1000 * 60));
   const hours = Math.floor(diffMins / 60);
   const minutes = diffMins % 60;
@@ -45,28 +84,27 @@ function renderEventDetails(arg) {
   const durationStr = `${hours}h ${minutes.toString().padStart(2, "0")}m`;
   arg.event.extendedProps.duration = durationStr;
 
+  const tooltipHtml = renderTooltipContent(arg)
+    .replace(/"/g, "&quot;") // Escape double quotes for title attribute
+    .replace(/\n/g, ""); // Remove line breaks
+
   return {
-    html: `<div class='event-disp-container'>
-            <div class="event-disp">
-                <p><span class="event-emp-id">${arg.event.extendedProps.employeeID}</span>${arg.event.extendedProps.employeeName}</p>
-                <p>${arg.event.extendedProps.address}</p>
-                <p>${arg.event.extendedProps.careerType}</p>
-                <p>${arg.event.extendedProps.duration}</p>
-            </div>
-            <div class="event-desc">
-                <p class="event-desc-id">${arg.event.extendedProps.employeeID}</p>
-                <p>12/11/2025 - 18/11/2025</p>
-                <div class="event-desc-grid">
-                  <p>Address (Work Order)</p>
-                  <p>${arg.event.extendedProps.address}</p>
-                   <p>Resources</p>
-                  <p>${arg.event.extendedProps.careerType}</p>
-                  <p>Booking Status</p>
-                  <p>${arg.event.extendedProps.bookingStatus}</p>
-                </div>
-            </div>
-    </div>
-            `,
+    html: `
+      <div class='event-disp-container' 
+           data-bs-toggle="tooltip" 
+           data-bs-html="true"
+           data-bs-placement="bottom"
+           data-popper-placement="left"
+           data-bs-custom-class="custom-tooltip"
+           title="${tooltipHtml}">
+        <div class="event-disp">
+          <p><span class="event-emp-id">${arg.event.extendedProps.employeeID}</span>${arg.event.extendedProps.employeeName}</p>
+          <p>${arg.event.extendedProps.address}</p>
+          <p>${arg.event.extendedProps.careerType}</p>
+          <p>${arg.event.extendedProps.duration}</p>
+        </div>
+      </div>
+    `,
   };
 }
 
@@ -357,8 +395,8 @@ function getEvents() {
   return [
     {
       resourceId: "1",
-      start: new Date("2025-07-23T10:45:00+05:30"),
-      end: new Date("2025-07-23T12:00:00+05:30"),
+      start: new Date("2025-07-24T10:45:00+05:30"),
+      end: new Date("2025-07-24T12:00:00+05:30"),
       id: "123",
       type: "Full",
       editable: false,
@@ -377,8 +415,8 @@ function getEvents() {
     },
     {
       resourceId: "2",
-      start: new Date("2025-07-23T10:00:00+05:30"),
-      end: new Date("2025-07-23T10:00:00+05:30"),
+      start: new Date("2025-07-24T10:00:00+05:30"),
+      end: new Date("2025-07-24T10:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -395,8 +433,8 @@ function getEvents() {
     },
     {
       resourceId: "3",
-      start: new Date("2025-07-23T13:30:00+05:30"),
-      end: new Date("2025-07-23T15:00:00+05:30"),
+      start: new Date("2025-07-24T13:30:00+05:30"),
+      end: new Date("2025-07-24T15:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -413,8 +451,8 @@ function getEvents() {
     },
     {
       resourceId: "4",
-      start: new Date("2025-07-23T09:45:00+05:30"),
-      end: new Date("2025-07-23T10:45:00+05:30"),
+      start: new Date("2025-07-24T09:45:00+05:30"),
+      end: new Date("2025-07-24T10:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -431,8 +469,8 @@ function getEvents() {
     },
     {
       resourceId: "5",
-      start: new Date("2025-07-23T12:00:00+05:30"),
-      end: new Date("2025-07-23T13:00:00+05:30"),
+      start: new Date("2025-07-24T12:00:00+05:30"),
+      end: new Date("2025-07-24T13:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -449,8 +487,8 @@ function getEvents() {
     },
     {
       resourceId: "6",
-      start: new Date("2025-07-23T08:00:00+05:30"),
-      end: new Date("2025-07-23T09:30:00+05:30"),
+      start: new Date("2025-07-24T08:00:00+05:30"),
+      end: new Date("2025-07-24T09:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -467,8 +505,8 @@ function getEvents() {
     },
     {
       resourceId: "7",
-      start: new Date("2025-07-23T10:00:00+05:30"),
-      end: new Date("2025-07-23T11:15:00+05:30"),
+      start: new Date("2025-07-24T10:00:00+05:30"),
+      end: new Date("2025-07-24T11:15:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -485,8 +523,8 @@ function getEvents() {
     },
     {
       resourceId: "8",
-      start: new Date("2025-07-23T11:30:00+05:30"),
-      end: new Date("2025-07-23T13:00:00+05:30"),
+      start: new Date("2025-07-24T11:30:00+05:30"),
+      end: new Date("2025-07-24T13:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -503,8 +541,8 @@ function getEvents() {
     },
     {
       resourceId: "9",
-      start: new Date("2025-07-23T13:15:00+05:30"),
-      end: new Date("2025-07-23T14:45:00+05:30"),
+      start: new Date("2025-07-24T13:15:00+05:30"),
+      end: new Date("2025-07-24T14:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -521,8 +559,8 @@ function getEvents() {
     },
     {
       resourceId: "10",
-      start: new Date("2025-07-23T09:00:00+05:30"),
-      end: new Date("2025-07-23T10:30:00+05:30"),
+      start: new Date("2025-07-24T09:00:00+05:30"),
+      end: new Date("2025-07-24T10:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -539,8 +577,8 @@ function getEvents() {
     },
     {
       resourceId: "11",
-      start: new Date("2025-07-23T14:00:00+05:30"),
-      end: new Date("2025-07-23T15:00:00+05:30"),
+      start: new Date("2025-07-24T14:00:00+05:30"),
+      end: new Date("2025-07-24T15:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -557,8 +595,8 @@ function getEvents() {
     },
     {
       resourceId: "12",
-      start: new Date("2025-07-23T10:45:00+05:30"),
-      end: new Date("2025-07-23T12:00:00+05:30"),
+      start: new Date("2025-07-24T10:45:00+05:30"),
+      end: new Date("2025-07-24T12:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -575,8 +613,8 @@ function getEvents() {
     },
     {
       resourceId: "13",
-      start: new Date("2025-07-23T08:30:00+05:30"),
-      end: new Date("2025-07-23T09:30:00+05:30"),
+      start: new Date("2025-07-24T08:30:00+05:30"),
+      end: new Date("2025-07-24T09:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -593,8 +631,8 @@ function getEvents() {
     },
     {
       resourceId: "14",
-      start: new Date("2025-07-23T15:00:00+05:30"),
-      end: new Date("2025-07-23T16:30:00+05:30"),
+      start: new Date("2025-07-24T15:00:00+05:30"),
+      end: new Date("2025-07-24T16:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -611,8 +649,8 @@ function getEvents() {
     },
     {
       resourceId: "15",
-      start: new Date("2025-07-23T13:00:00+05:30"),
-      end: new Date("2025-07-23T14:00:00+05:30"),
+      start: new Date("2025-07-24T13:00:00+05:30"),
+      end: new Date("2025-07-24T14:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -629,8 +667,8 @@ function getEvents() {
     },
     {
       resourceId: "16",
-      start: new Date("2025-07-23T11:15:00+05:30"),
-      end: new Date("2025-07-23T12:45:00+05:30"),
+      start: new Date("2025-07-24T11:15:00+05:30"),
+      end: new Date("2025-07-24T12:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -647,8 +685,8 @@ function getEvents() {
     },
     {
       resourceId: "17",
-      start: new Date("2025-07-23T08:45:00+05:30"),
-      end: new Date("2025-07-23T10:00:00+05:30"),
+      start: new Date("2025-07-24T08:45:00+05:30"),
+      end: new Date("2025-07-24T10:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -665,8 +703,8 @@ function getEvents() {
     },
     {
       resourceId: "18",
-      start: new Date("2025-07-23T14:15:00+05:30"),
-      end: new Date("2025-07-23T15:30:00+05:30"),
+      start: new Date("2025-07-24T14:15:00+05:30"),
+      end: new Date("2025-07-24T15:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -712,6 +750,21 @@ function createSorter() {
     ascending = !ascending;
     upadateResources(sorted);
   };
+}
+
+function initializeAllTooltips() {
+  const elements = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+
+  elements.forEach((el) => {
+    const existing = bootstrap.Tooltip.getInstance(el);
+    if (existing) existing.dispose();
+
+    new bootstrap.Tooltip(el, {
+      container: ".ec-body", 
+      boundary: "clippingParents", 
+      fallbackPlacements: ["top", "bottom", "left", "right"], 
+    });
+  });
 }
 
 // --- SEARCH & SORT HOOKUP ---
@@ -763,6 +816,8 @@ function renderSearch() {
     filterState.sortAsc = !filterState.sortAsc;
     applyAllFilters();
   });
+
+  initializeAllTooltips();
 }
 
 function createCalendar() {
@@ -803,6 +858,7 @@ function createCalendar() {
 window.addEventListener("DOMContentLoaded", function () {
   createCalendar();
   setupFilterDropdownsAndReset();
+
   // Today BTN
   var todayBtn = getById("today-btn");
   if (todayBtn) {

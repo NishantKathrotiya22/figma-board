@@ -1,7 +1,7 @@
 :root {
     /* === Base Colors === */
     --bg-main: #F5F5F5;
-    --bg-white:#ffffff;
+    --bg-white: #ffffff;
     --text-toolbar: rgba(0, 0, 0, 0.6);
     --text-light: #ffffff;
     --text-dark: #000000;
@@ -42,6 +42,8 @@
     /* 15% opacity */
 
     --btn-bg-color: #027BFF;
+
+    --scrollbar-color: #006eff;
 }
 
 
