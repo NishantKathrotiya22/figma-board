@@ -498,7 +498,7 @@ select:focus>option:hover {
 }
 
 /**** Fix For Last line in case of 1 or 2 Elements ****/
-.ec-days:last-child .ec-day{
+.ec-days:last-child .ec-day {
     box-sizing: content-box;
     margin-bottom: 3px !important;
     border-bottom: 3px dashed var(--border-color) !important;

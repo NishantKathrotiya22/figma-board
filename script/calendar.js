@@ -19,13 +19,14 @@ let filterState = {
 
 //Global Data
 let eventData = [];
+let resourceData = [];
 
 function getById(id) {
   return document.getElementById(id);
 }
 
 function setIntialData() {
-  data = [
+  eventData = [
     {
       resourceId: "1",
       start: new Date("2025-07-24T11:45:00+05:30"),
@@ -353,11 +354,158 @@ function setIntialData() {
       },
     },
   ];
+
+  resourceData = [
+    {
+      id: 1,
+      extendedProps: {
+        name: "Diana Alexiou",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R1.jpg",
+      },
+    },
+    {
+      id: 2,
+      extendedProps: {
+        name: "Olivia Clarke",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R2.jpg",
+      },
+    },
+    {
+      id: 3,
+      extendedProps: {
+        name: "Liam Bennett",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R3.jpg",
+      },
+    },
+    {
+      id: 4,
+      extendedProps: {
+        name: "Mia Walker",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R4.jpg",
+      },
+    },
+    {
+      id: 5,
+      extendedProps: {
+        name: "Ethan Johnson",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R5.jpg",
+      },
+    },
+    {
+      id: 6,
+      extendedProps: {
+        name: "Chloe Walker",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R6.jpg",
+      },
+    },
+    {
+      id: 7,
+      extendedProps: {
+        name: "Noah Carter",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R7.jpg",
+      },
+    },
+    {
+      id: 8,
+      extendedProps: {
+        name: "Grace Foster",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R8.jpg",
+      },
+    },
+    {
+      id: 9,
+      extendedProps: {
+        name: "Oscar Hughes",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R9.jpg",
+      },
+    },
+    {
+      id: 10,
+      extendedProps: {
+        name: "Liam Carter",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R1.jpg",
+      },
+    },
+    {
+      id: 11,
+      extendedProps: {
+        name: "Ava Reynolds",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R2.jpg",
+      },
+    },
+    {
+      id: 12,
+      extendedProps: {
+        name: "Freya Dawson",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R3.jpg",
+      },
+    },
+    {
+      id: 13,
+      extendedProps: {
+        name: "Sienna Brooks",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R4.jpg",
+      },
+    },
+    {
+      id: 14,
+      extendedProps: {
+        name: "Leo Murphy",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R5.jpg",
+      },
+    },
+    {
+      id: 15,
+      extendedProps: {
+        name: "Lily Morgan",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R6.jpg",
+      },
+    },
+    {
+      id: 16,
+      extendedProps: {
+        name: "Elliot Brooks",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R7.jpg",
+      },
+    },
+    {
+      id: 17,
+      extendedProps: {
+        name: "Mason Green",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R8.jpg",
+      },
+    },
+    {
+      id: 18,
+      extendedProps: {
+        name: "Isla Matthews",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R9.jpg",
+      },
+    },
+  ];
   reRenderEvents();
 }
 
 function setLeaveData() {
-  data = [
+  eventData = [
     {
       resourceId: "1",
       start: new Date("2025-07-24T10:45:00+05:30"),
@@ -685,6 +833,98 @@ function setLeaveData() {
       },
     },
   ];
+
+  resourceData = [
+    {
+      id: 8,
+      extendedProps: {
+        name: "Liam Carter",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R4.jpg",
+      },
+    },
+    {
+      id: 3,
+      extendedProps: {
+        name: "Freya Dawson",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R2.jpg",
+      },
+    },
+    {
+      id: 15,
+      extendedProps: {
+        name: "Mason Green",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R1.jpg",
+      },
+    },
+    {
+      id: 1,
+      extendedProps: {
+        name: "Leo Murphy",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R6.jpg",
+      },
+    },
+    {
+      id: 11,
+      extendedProps: {
+        name: "Oscar Hughes",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R9.jpg",
+      },
+    },
+    {
+      id: 6,
+      extendedProps: {
+        name: "Ava Reynolds",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R5.jpg",
+      },
+    },
+    {
+      id: 13,
+      extendedProps: {
+        name: "Sienna Brooks",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R8.jpg",
+      },
+    },
+    {
+      id: 2,
+      extendedProps: {
+        name: "Chloe Walker",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R3.jpg",
+      },
+    },
+    {
+      id: 10,
+      extendedProps: {
+        name: "Elliot Brooks",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R7.jpg",
+      },
+    },
+    {
+      id: 4,
+      extendedProps: {
+        name: "Grace Foster",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R6.jpg",
+      },
+    },
+    {
+      id: 5,
+      extendedProps: {
+        name: "Mia Walker",
+        totalTime: "244h 29m booked",
+        imgUrl: "Assets/profiles/R9.jpg",
+      },
+    },
+  ];
+
   reRenderEvents();
 }
 
@@ -693,7 +933,8 @@ function reRenderEvents() {
   disposeAllTooltips();
 
   //Rerender new Events
-  window.ecCalendar.setOption("events", data);
+  window.ecCalendar.setOption("events", eventData);
+  window.ecCalendar.setOption("resources", resourceData);
 
   //Intialze Tooltip Again
   setTimeout(() => {
@@ -792,6 +1033,16 @@ function renderEventDetails(arg) {
             <p>${arg.event.extendedProps.address}</p>
             <p>${arg.event.extendedProps.careerType}</p>
             <p>${arg.event.extendedProps.duration}</p>
+        </div>
+         <div class="event-disp-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path
+                    d="M15.3437 4.84375L16.5937 3.40625C16.8437 3.125 16.8125 2.65625 16.5313 2.40625C16.1875 2.15625 15.75 2.1875 15.5 2.5L14.1875 4.0625C13.1563 3.46875 11.9687 3.0625 10.7187 2.96875V1.9375H12.7188C13.0938 1.9375 13.4063 1.625 13.4063 1.25C13.4063 0.875 13.0938 0.5625 12.7188 0.5625H7.3125C6.9375 0.5625 6.625 0.875 6.625 1.25C6.625 1.625 6.9375 1.9375 7.3125 1.9375H9.3125V2.9375C5.0625 3.28125 1.71875 6.84375 1.71875 11.1875C1.71875 15.75 5.4375 19.4688 10 19.4688C14.5625 19.4688 18.2812 15.75 18.2812 11.1875C18.2812 8.65625 17.125 6.375 15.3437 4.84375ZM10 18.0625C6.21875 18.0625 3.125 14.9688 3.125 11.1875C3.125 7.40625 6.21875 4.3125 10 4.3125C13.7813 4.3125 16.875 7.40625 16.875 11.1875C16.875 14.9688 13.7813 18.0625 10 18.0625Z"
+                    fill="currentColor" />
+                <path
+                    d="M10.6875 11.0625V7.4375C10.6875 7.0625 10.375 6.75 10 6.75C9.625 6.75 9.3125 7.0625 9.3125 7.4375V11.3437C9.3125 11.5312 9.375 11.7188 9.53125 11.8438L11.8438 14.1562C11.9688 14.2812 12.1563 14.375 12.3438 14.375C12.5313 14.375 12.7188 14.3125 12.8438 14.1562C13.125 13.875 13.125 13.4375 12.8438 13.1562L10.6875 11.0625Z"
+                    fill="currentColor" />
+            </svg>
         </div>
         </div>
     `,
@@ -942,157 +1193,12 @@ function debounce(func, delay) {
 }
 
 function getResources() {
-  return [
-    {
-      id: 1,
-      extendedProps: {
-        name: "Diana Alexiou",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R1.jpg",
-      },
-    },
-    {
-      id: 2,
-      extendedProps: {
-        name: "Olivia Clarke",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R2.jpg",
-      },
-    },
-    {
-      id: 3,
-      extendedProps: {
-        name: "Liam Bennett",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R3.jpg",
-      },
-    },
-    {
-      id: 4,
-      extendedProps: {
-        name: "Mia Walker",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R4.jpg",
-      },
-    },
-    {
-      id: 5,
-      extendedProps: {
-        name: "Ethan Johnson",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R5.jpg",
-      },
-    },
-    {
-      id: 6,
-      extendedProps: {
-        name: "Chloe Walker",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R6.jpg",
-      },
-    },
-    {
-      id: 7,
-      extendedProps: {
-        name: "Noah Carter",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R7.jpg",
-      },
-    },
-    {
-      id: 8,
-      extendedProps: {
-        name: "Grace Foster",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R8.jpg",
-      },
-    },
-    {
-      id: 9,
-      extendedProps: {
-        name: "Oscar Hughes",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R9.jpg",
-      },
-    },
-    {
-      id: 10,
-      extendedProps: {
-        name: "Liam Carter",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R1.jpg",
-      },
-    },
-    {
-      id: 11,
-      extendedProps: {
-        name: "Ava Reynolds",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R2.jpg",
-      },
-    },
-    {
-      id: 12,
-      extendedProps: {
-        name: "Freya Dawson",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R3.jpg",
-      },
-    },
-    {
-      id: 13,
-      extendedProps: {
-        name: "Sienna Brooks",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R4.jpg",
-      },
-    },
-    {
-      id: 14,
-      extendedProps: {
-        name: "Leo Murphy",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R5.jpg",
-      },
-    },
-    {
-      id: 15,
-      extendedProps: {
-        name: "Lily Morgan",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R6.jpg",
-      },
-    },
-    {
-      id: 16,
-      extendedProps: {
-        name: "Elliot Brooks",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R7.jpg",
-      },
-    },
-    {
-      id: 17,
-      extendedProps: {
-        name: "Mason Green",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R8.jpg",
-      },
-    },
-    {
-      id: 18,
-      extendedProps: {
-        name: "Isla Matthews",
-        totalTime: "244h 29m booked",
-        imgUrl: "Assets/profiles/R9.jpg",
-      },
-    },
-  ];
+  return typeof resourceData !== "undefined" ? resourceData : [];
 }
 
 function getEvents() {
   // Always return the current global event data
-  return typeof data !== "undefined" ? data : [];
+  return typeof eventData !== "undefined" ? eventData : [];
 }
 
 function filterResources(query) {
