@@ -549,16 +549,18 @@ select:focus>option:hover {
 }
 
 /**** Bottom Right Icon ****/
-.event-icon {
+.event-disp-icon {
     width: fit-content;
     height: fit-content;
     position: absolute;
     right: 0;
     bottom: 0;
-    z-index: 2060;
+    z-index: 2090;
     padding: 1rem;
     cursor: pointer;
+    padding: 0 0.5rem 0 0;
 }
+
 
 
 
