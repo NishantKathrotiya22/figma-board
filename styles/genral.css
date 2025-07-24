@@ -127,12 +127,7 @@ body {
     color: var(--text-dark);
 }
 
-
-
-
-/*
-
-Yellow - 
-
-
-*/
+.ec,
+#ec {
+    height: 100%;
+}

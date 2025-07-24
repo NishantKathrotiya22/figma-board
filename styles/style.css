@@ -25,6 +25,7 @@
 
 .active-tab-btn {
     border-bottom: 1px solid var(--filter-active-color);
+    color: var(--text-dark);
 }
 
 .tab-btn img {
@@ -496,9 +497,18 @@ select:focus>option:hover {
     border-bottom: 3px solid var(--border-color) !important;
 }
 
+/**** Fix For Last line in case of 1 or 2 Elements ****/
+.ec-days:last-child .ec-day{
+    box-sizing: content-box;
+    margin-bottom: 3px !important;
+    border-bottom: 3px dashed var(--border-color) !important;
+}
+
 /***** Calendar BG Color *****/
 .ec-today {
     background-color: transparent !important;
+    flex-basis: 0 !important;
+    height: 8rem !important;
 }
 
 
