@@ -33,12 +33,15 @@ function parseDate(date) {
   return `${weekday} - ${day}-${month}-${year}`;
 }
 
-// function renderTooltipContent(arg) {
-//   return `<div>
-//                 <p class='tool-title'>${arg.event.extendedProps.employeeID}</p>
-//                 <p>12/11/2025 - 18/11/2025</p>
-//             </div>`;
-// }
+function disposeAllTooltips() {
+  const tooltipElements = document.querySelectorAll(
+    '[data-bs-toggle="tooltip"]'
+  );
+  tooltipElements.forEach((el) => {
+    const instance = bootstrap.Tooltip.getInstance(el);
+    if (instance) instance.dispose();
+  });
+}
 
 function renderTooltipContent(arg) {
   return `
@@ -57,22 +60,6 @@ function renderTooltipContent(arg) {
   `;
 }
 
-/*
-<div>
-    <p class="event-desc-id">${arg.event.extendedProps.employeeID}</p>
-    <p>12/11/2025 - 18/11/2025</p>
-    <div class="event-desc-grid">
-      <p>Address (Work Order)</p>
-      <p>${arg.event.extendedProps.address}</p>
-      <p>Resources</p>
-      <p>${arg.event.extendedProps.careerType}</p>
-      <p>Booking Status</p>
-      <p>${arg.event.extendedProps.bookingStatus}</p>
-    </div>
-</div>
-
-
-*/
 function renderEventDetails(arg) {
   const start = new Date(arg.event.start);
   const end = new Date(arg.event.end);
@@ -183,7 +170,12 @@ function getFilteredAndSearchedResources() {
 
 function upadateResources(data) {
   if (window.ecCalendar) {
+    disposeAllTooltips();
+
     window.ecCalendar.setOption("resources", data);
+    setTimeout(() => {
+      initializeAllTooltips(); // ✅ This re-attaches tooltips correctly
+    }, 0);
   }
 }
 
@@ -753,16 +745,16 @@ function createSorter() {
 }
 
 function initializeAllTooltips() {
+  disposeAllTooltips();
   const elements = document.querySelectorAll('[data-bs-toggle="tooltip"]');
-
   elements.forEach((el) => {
     const existing = bootstrap.Tooltip.getInstance(el);
     if (existing) existing.dispose();
 
     new bootstrap.Tooltip(el, {
-      container: ".ec-body", 
-      boundary: "clippingParents", 
-      fallbackPlacements: ["top", "bottom", "left", "right"], 
+      container: ".ec-body",
+      boundary: "clippingParents",
+      fallbackPlacements: ["top", "bottom", "left", "right"],
     });
   });
 }
@@ -851,7 +843,6 @@ function createCalendar() {
     slotMaxTime: "20:00:00",
   });
   window.ecCalendar = ec;
-  console.log(ec.getOption("duration"));
 }
 
 // --- INIT ---
