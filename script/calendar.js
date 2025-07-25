@@ -29,8 +29,8 @@ function setIntialData() {
   eventData = [
     {
       resourceId: "1",
-      start: new Date("2025-07-24T11:45:00+05:30"),
-      end: new Date("2025-07-24T13:00:00+05:30"),
+      start: new Date("2025-07-25T11:45:00+05:30"),
+      end: new Date("2025-07-25T13:00:00+05:30"),
       id: "123",
       type: "Full",
       editable: false,
@@ -49,8 +49,8 @@ function setIntialData() {
     },
     {
       resourceId: "2",
-      start: new Date("2025-07-24T12:00:00+05:30"),
-      end: new Date("2025-07-24T13:00:00+05:30"),
+      start: new Date("2025-07-25T12:00:00+05:30"),
+      end: new Date("2025-07-25T13:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -67,8 +67,8 @@ function setIntialData() {
     },
     {
       resourceId: "3",
-      start: new Date("2025-07-24T13:30:00+05:30"),
-      end: new Date("2025-07-24T15:00:00+05:30"),
+      start: new Date("2025-07-25T13:30:00+05:30"),
+      end: new Date("2025-07-25T15:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -85,8 +85,8 @@ function setIntialData() {
     },
     {
       resourceId: "4",
-      start: new Date("2025-07-24T01:45:00+05:30"),
-      end: new Date("2025-07-24T12:45:00+05:30"),
+      start: new Date("2025-07-25T01:45:00+05:30"),
+      end: new Date("2025-07-25T12:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -103,8 +103,8 @@ function setIntialData() {
     },
     {
       resourceId: "5",
-      start: new Date("2025-07-24T10:00:00+05:30"),
-      end: new Date("2025-07-24T11:00:00+05:30"),
+      start: new Date("2025-07-25T10:00:00+05:30"),
+      end: new Date("2025-07-25T11:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -121,8 +121,8 @@ function setIntialData() {
     },
     {
       resourceId: "6",
-      start: new Date("2025-07-24T08:00:00+05:30"),
-      end: new Date("2025-07-24T09:30:00+05:30"),
+      start: new Date("2025-07-25T08:00:00+05:30"),
+      end: new Date("2025-07-25T09:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -139,8 +139,8 @@ function setIntialData() {
     },
     {
       resourceId: "7",
-      start: new Date("2025-07-24T10:00:00+05:30"),
-      end: new Date("2025-07-24T11:15:00+05:30"),
+      start: new Date("2025-07-25T10:00:00+05:30"),
+      end: new Date("2025-07-25T11:15:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -157,8 +157,8 @@ function setIntialData() {
     },
     {
       resourceId: "8",
-      start: new Date("2025-07-24T11:30:00+05:30"),
-      end: new Date("2025-07-24T13:00:00+05:30"),
+      start: new Date("2025-07-25T11:30:00+05:30"),
+      end: new Date("2025-07-25T13:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -175,8 +175,8 @@ function setIntialData() {
     },
     {
       resourceId: "9",
-      start: new Date("2025-07-24T13:15:00+05:30"),
-      end: new Date("2025-07-24T14:45:00+05:30"),
+      start: new Date("2025-07-25T13:15:00+05:30"),
+      end: new Date("2025-07-25T14:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -193,8 +193,8 @@ function setIntialData() {
     },
     {
       resourceId: "10",
-      start: new Date("2025-07-24T09:00:00+05:30"),
-      end: new Date("2025-07-24T10:30:00+05:30"),
+      start: new Date("2025-07-25T09:00:00+05:30"),
+      end: new Date("2025-07-25T10:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -211,8 +211,8 @@ function setIntialData() {
     },
     {
       resourceId: "11",
-      start: new Date("2025-07-24T14:00:00+05:30"),
-      end: new Date("2025-07-24T15:00:00+05:30"),
+      start: new Date("2025-07-25T14:00:00+05:30"),
+      end: new Date("2025-07-25T15:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -229,8 +229,8 @@ function setIntialData() {
     },
     {
       resourceId: "12",
-      start: new Date("2025-07-24T10:45:00+05:30"),
-      end: new Date("2025-07-24T12:00:00+05:30"),
+      start: new Date("2025-07-25T10:45:00+05:30"),
+      end: new Date("2025-07-25T12:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -247,8 +247,8 @@ function setIntialData() {
     },
     {
       resourceId: "13",
-      start: new Date("2025-07-24T08:30:00+05:30"),
-      end: new Date("2025-07-24T09:30:00+05:30"),
+      start: new Date("2025-07-25T08:30:00+05:30"),
+      end: new Date("2025-07-25T09:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -265,8 +265,8 @@ function setIntialData() {
     },
     {
       resourceId: "14",
-      start: new Date("2025-07-24T15:00:00+05:30"),
-      end: new Date("2025-07-24T16:30:00+05:30"),
+      start: new Date("2025-07-25T15:00:00+05:30"),
+      end: new Date("2025-07-25T16:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -283,8 +283,8 @@ function setIntialData() {
     },
     {
       resourceId: "15",
-      start: new Date("2025-07-24T13:00:00+05:30"),
-      end: new Date("2025-07-24T14:00:00+05:30"),
+      start: new Date("2025-07-25T13:00:00+05:30"),
+      end: new Date("2025-07-25T14:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -301,8 +301,8 @@ function setIntialData() {
     },
     {
       resourceId: "16",
-      start: new Date("2025-07-24T11:15:00+05:30"),
-      end: new Date("2025-07-24T12:45:00+05:30"),
+      start: new Date("2025-07-25T11:15:00+05:30"),
+      end: new Date("2025-07-25T12:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -319,8 +319,8 @@ function setIntialData() {
     },
     {
       resourceId: "17",
-      start: new Date("2025-07-24T08:45:00+05:30"),
-      end: new Date("2025-07-24T10:00:00+05:30"),
+      start: new Date("2025-07-25T08:45:00+05:30"),
+      end: new Date("2025-07-25T10:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -337,8 +337,8 @@ function setIntialData() {
     },
     {
       resourceId: "18",
-      start: new Date("2025-07-24T14:15:00+05:30"),
-      end: new Date("2025-07-24T15:30:00+05:30"),
+      start: new Date("2025-07-25T14:15:00+05:30"),
+      end: new Date("2025-07-25T15:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -360,7 +360,7 @@ function setIntialData() {
       id: 1,
       extendedProps: {
         name: "Diana Alexiou",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R1.jpg",
       },
     },
@@ -368,7 +368,7 @@ function setIntialData() {
       id: 2,
       extendedProps: {
         name: "Olivia Clarke",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R2.jpg",
       },
     },
@@ -376,7 +376,7 @@ function setIntialData() {
       id: 3,
       extendedProps: {
         name: "Liam Bennett",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R3.jpg",
       },
     },
@@ -384,7 +384,7 @@ function setIntialData() {
       id: 4,
       extendedProps: {
         name: "Mia Walker",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R4.jpg",
       },
     },
@@ -392,7 +392,7 @@ function setIntialData() {
       id: 5,
       extendedProps: {
         name: "Ethan Johnson",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R5.jpg",
       },
     },
@@ -400,7 +400,7 @@ function setIntialData() {
       id: 6,
       extendedProps: {
         name: "Chloe Walker",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R6.jpg",
       },
     },
@@ -408,7 +408,7 @@ function setIntialData() {
       id: 7,
       extendedProps: {
         name: "Noah Carter",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R7.jpg",
       },
     },
@@ -416,7 +416,7 @@ function setIntialData() {
       id: 8,
       extendedProps: {
         name: "Grace Foster",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R8.jpg",
       },
     },
@@ -424,7 +424,7 @@ function setIntialData() {
       id: 9,
       extendedProps: {
         name: "Oscar Hughes",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R9.jpg",
       },
     },
@@ -432,7 +432,7 @@ function setIntialData() {
       id: 10,
       extendedProps: {
         name: "Liam Carter",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R1.jpg",
       },
     },
@@ -440,7 +440,7 @@ function setIntialData() {
       id: 11,
       extendedProps: {
         name: "Ava Reynolds",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R2.jpg",
       },
     },
@@ -448,7 +448,7 @@ function setIntialData() {
       id: 12,
       extendedProps: {
         name: "Freya Dawson",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R3.jpg",
       },
     },
@@ -456,7 +456,7 @@ function setIntialData() {
       id: 13,
       extendedProps: {
         name: "Sienna Brooks",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R4.jpg",
       },
     },
@@ -464,7 +464,7 @@ function setIntialData() {
       id: 14,
       extendedProps: {
         name: "Leo Murphy",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R5.jpg",
       },
     },
@@ -472,7 +472,7 @@ function setIntialData() {
       id: 15,
       extendedProps: {
         name: "Lily Morgan",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R6.jpg",
       },
     },
@@ -480,7 +480,7 @@ function setIntialData() {
       id: 16,
       extendedProps: {
         name: "Elliot Brooks",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R7.jpg",
       },
     },
@@ -488,7 +488,7 @@ function setIntialData() {
       id: 17,
       extendedProps: {
         name: "Mason Green",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R8.jpg",
       },
     },
@@ -496,7 +496,7 @@ function setIntialData() {
       id: 18,
       extendedProps: {
         name: "Isla Matthews",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R9.jpg",
       },
     },
@@ -508,8 +508,8 @@ function setLeaveData() {
   eventData = [
     {
       resourceId: "1",
-      start: new Date("2025-07-24T10:45:00+05:30"),
-      end: new Date("2025-07-24T12:00:00+05:30"),
+      start: new Date("2025-07-25T10:45:00+05:30"),
+      end: new Date("2025-07-25T12:00:00+05:30"),
       id: "123",
       type: "Full",
       editable: false,
@@ -528,8 +528,8 @@ function setLeaveData() {
     },
     {
       resourceId: "2",
-      start: new Date("2025-07-24T10:00:00+05:30"),
-      end: new Date("2025-07-24T10:00:00+05:30"),
+      start: new Date("2025-07-25T10:00:00+05:30"),
+      end: new Date("2025-07-25T10:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -546,8 +546,8 @@ function setLeaveData() {
     },
     {
       resourceId: "3",
-      start: new Date("2025-07-24T13:30:00+05:30"),
-      end: new Date("2025-07-24T15:00:00+05:30"),
+      start: new Date("2025-07-25T13:30:00+05:30"),
+      end: new Date("2025-07-25T15:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -564,8 +564,8 @@ function setLeaveData() {
     },
     {
       resourceId: "4",
-      start: new Date("2025-07-24T09:45:00+05:30"),
-      end: new Date("2025-07-24T10:45:00+05:30"),
+      start: new Date("2025-07-25T09:45:00+05:30"),
+      end: new Date("2025-07-25T10:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -582,8 +582,8 @@ function setLeaveData() {
     },
     {
       resourceId: "5",
-      start: new Date("2025-07-24T12:00:00+05:30"),
-      end: new Date("2025-07-24T13:00:00+05:30"),
+      start: new Date("2025-07-25T12:00:00+05:30"),
+      end: new Date("2025-07-25T13:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -600,8 +600,8 @@ function setLeaveData() {
     },
     {
       resourceId: "6",
-      start: new Date("2025-07-24T08:00:00+05:30"),
-      end: new Date("2025-07-24T09:30:00+05:30"),
+      start: new Date("2025-07-25T08:00:00+05:30"),
+      end: new Date("2025-07-25T09:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -618,8 +618,8 @@ function setLeaveData() {
     },
     {
       resourceId: "7",
-      start: new Date("2025-07-24T10:00:00+05:30"),
-      end: new Date("2025-07-24T11:15:00+05:30"),
+      start: new Date("2025-07-25T10:00:00+05:30"),
+      end: new Date("2025-07-25T11:15:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -636,8 +636,8 @@ function setLeaveData() {
     },
     {
       resourceId: "8",
-      start: new Date("2025-07-24T11:30:00+05:30"),
-      end: new Date("2025-07-24T13:00:00+05:30"),
+      start: new Date("2025-07-25T11:30:00+05:30"),
+      end: new Date("2025-07-25T13:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -654,8 +654,8 @@ function setLeaveData() {
     },
     {
       resourceId: "9",
-      start: new Date("2025-07-24T13:15:00+05:30"),
-      end: new Date("2025-07-24T14:45:00+05:30"),
+      start: new Date("2025-07-25T13:15:00+05:30"),
+      end: new Date("2025-07-25T14:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -672,8 +672,8 @@ function setLeaveData() {
     },
     {
       resourceId: "10",
-      start: new Date("2025-07-24T09:00:00+05:30"),
-      end: new Date("2025-07-24T10:30:00+05:30"),
+      start: new Date("2025-07-25T09:00:00+05:30"),
+      end: new Date("2025-07-25T10:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -690,8 +690,8 @@ function setLeaveData() {
     },
     {
       resourceId: "11",
-      start: new Date("2025-07-24T14:00:00+05:30"),
-      end: new Date("2025-07-24T15:00:00+05:30"),
+      start: new Date("2025-07-25T14:00:00+05:30"),
+      end: new Date("2025-07-25T15:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -708,8 +708,8 @@ function setLeaveData() {
     },
     {
       resourceId: "12",
-      start: new Date("2025-07-24T10:45:00+05:30"),
-      end: new Date("2025-07-24T12:00:00+05:30"),
+      start: new Date("2025-07-25T10:45:00+05:30"),
+      end: new Date("2025-07-25T12:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -726,8 +726,8 @@ function setLeaveData() {
     },
     {
       resourceId: "13",
-      start: new Date("2025-07-24T08:30:00+05:30"),
-      end: new Date("2025-07-24T09:30:00+05:30"),
+      start: new Date("2025-07-25T08:30:00+05:30"),
+      end: new Date("2025-07-25T09:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -744,8 +744,8 @@ function setLeaveData() {
     },
     {
       resourceId: "14",
-      start: new Date("2025-07-24T15:00:00+05:30"),
-      end: new Date("2025-07-24T16:30:00+05:30"),
+      start: new Date("2025-07-25T15:00:00+05:30"),
+      end: new Date("2025-07-25T16:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -762,8 +762,8 @@ function setLeaveData() {
     },
     {
       resourceId: "15",
-      start: new Date("2025-07-24T13:00:00+05:30"),
-      end: new Date("2025-07-24T14:00:00+05:30"),
+      start: new Date("2025-07-25T13:00:00+05:30"),
+      end: new Date("2025-07-25T14:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -780,8 +780,8 @@ function setLeaveData() {
     },
     {
       resourceId: "16",
-      start: new Date("2025-07-24T11:15:00+05:30"),
-      end: new Date("2025-07-24T12:45:00+05:30"),
+      start: new Date("2025-07-25T11:15:00+05:30"),
+      end: new Date("2025-07-25T12:45:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -798,8 +798,8 @@ function setLeaveData() {
     },
     {
       resourceId: "17",
-      start: new Date("2025-07-24T08:45:00+05:30"),
-      end: new Date("2025-07-24T10:00:00+05:30"),
+      start: new Date("2025-07-25T08:45:00+05:30"),
+      end: new Date("2025-07-25T10:00:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -816,8 +816,8 @@ function setLeaveData() {
     },
     {
       resourceId: "18",
-      start: new Date("2025-07-24T14:15:00+05:30"),
-      end: new Date("2025-07-24T15:30:00+05:30"),
+      start: new Date("2025-07-25T14:15:00+05:30"),
+      end: new Date("2025-07-25T15:30:00+05:30"),
       editable: false,
       durationEditable: false,
       eventStartEditable: false,
@@ -839,7 +839,7 @@ function setLeaveData() {
       id: 8,
       extendedProps: {
         name: "Liam Carter",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R4.jpg",
       },
     },
@@ -847,7 +847,7 @@ function setLeaveData() {
       id: 3,
       extendedProps: {
         name: "Freya Dawson",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R2.jpg",
       },
     },
@@ -855,7 +855,7 @@ function setLeaveData() {
       id: 15,
       extendedProps: {
         name: "Mason Green",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R1.jpg",
       },
     },
@@ -863,7 +863,7 @@ function setLeaveData() {
       id: 1,
       extendedProps: {
         name: "Leo Murphy",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R6.jpg",
       },
     },
@@ -871,7 +871,7 @@ function setLeaveData() {
       id: 11,
       extendedProps: {
         name: "Oscar Hughes",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R9.jpg",
       },
     },
@@ -879,7 +879,7 @@ function setLeaveData() {
       id: 6,
       extendedProps: {
         name: "Ava Reynolds",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R5.jpg",
       },
     },
@@ -887,7 +887,7 @@ function setLeaveData() {
       id: 13,
       extendedProps: {
         name: "Sienna Brooks",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R8.jpg",
       },
     },
@@ -895,7 +895,7 @@ function setLeaveData() {
       id: 2,
       extendedProps: {
         name: "Chloe Walker",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R3.jpg",
       },
     },
@@ -903,7 +903,7 @@ function setLeaveData() {
       id: 10,
       extendedProps: {
         name: "Elliot Brooks",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R7.jpg",
       },
     },
@@ -911,7 +911,7 @@ function setLeaveData() {
       id: 4,
       extendedProps: {
         name: "Grace Foster",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R6.jpg",
       },
     },
@@ -919,7 +919,7 @@ function setLeaveData() {
       id: 5,
       extendedProps: {
         name: "Mia Walker",
-        totalTime: "244h 29m booked",
+        totalTime: "244h 29m ",
         imgUrl: "Assets/profiles/R9.jpg",
       },
     },
