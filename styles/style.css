@@ -572,7 +572,7 @@ select:focus>option:hover {
     position: absolute;
     right: 0;
     bottom: 0;
-    z-index: 2090;
+    z-index: 1000;
     padding: 1rem;
     cursor: pointer;
     padding: 0 0.5rem 0 0;
