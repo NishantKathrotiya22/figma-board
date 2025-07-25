@@ -1066,7 +1066,7 @@ function renderResources(info) {
         </div>
         <div class="person-info">   
           <h5>${info.resource.extendedProps.name}</h5>
-          <p>(${info.resource.extendedProps.totalTime} booked)</p>
+          <!--- <p>(${info.resource.extendedProps.totalTime} booked)</p> --->
         </div>
       </div>`,
   };
@@ -1319,10 +1319,11 @@ function createCalendar() {
     eventContent: renderEventDetails,
     resourceLabelContent: renderResources,
     viewDidMount: renderSearch,
+    eventAllUpdated: initializeAllTooltips,
     // titleFormat: (start, end) => parseDate(start),
 
-    filterResourcesWithEvents: true,
-    filterEventsWithResources: true,
+    // filterResourcesWithEvents: true, // Remove Comment in both to hide resources without Event and visaverca
+    // filterEventsWithResources: true,
 
     slotMinTime: "9:00:00",
     slotMaxTime: "20:00:00",

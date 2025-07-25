@@ -13,6 +13,7 @@ if (dropdowns.length) {
       }
     });
   });
+
   dropdowns.forEach(function (dropdown) {
     var disp = dropdown.querySelector(".value-display");
     var selected = dropdown.querySelector(".dropdown-selected");
@@ -20,6 +21,15 @@ if (dropdowns.length) {
     if (selected) {
       selected.addEventListener("click", function (e) {
         e.stopPropagation();
+
+        // Close all other dropdowns before toggling this one
+        dropdowns.forEach(function (dd) {
+          if (dd !== dropdown) {
+            dd.classList.remove("open");
+          }
+        });
+
+        // Toggle current dropdown
         dropdown.classList.toggle("open");
       });
     }

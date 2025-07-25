@@ -321,7 +321,6 @@ select:focus>option:hover {
     border-radius: 50%;
     overflow: hidden;
     padding: 0;
-
 }
 
 .profile-img img {
@@ -333,13 +332,13 @@ select:focus>option:hover {
 
 .person-info h5 {
     font-size: 1.4rem;
-    margin-bottom: 0.5rem;
     font-weight: 400;
 }
 
 
 .person-info p {
     font-size: 1.4rem;
+    margin-top: 0.5rem;
     color: var(--text-light-2);
 }
 
